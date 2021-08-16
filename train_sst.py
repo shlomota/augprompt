@@ -45,8 +45,9 @@ raw_datasets = raw_datasets.remove_columns(["tokens", "tree"])
 
 print("finished load", flush=True)
 
+print(args)
 raw_datasets['train'] = raw_datasets["train"].shuffle(seed=42).select(range(args.n))
-raw_datasets['train'] = augment_data(raw_datasets['train'], args.m, args.t, DATASET_FILE, PROMPT_FILE)
+raw_datasets['train'] = augment_data(raw_datasets['train'], args.multiplier, args.augment_type, DATASET_FILE, PROMPT_FILE)
 print("finished augment", flush=True)
 #raw_datasets["train"] = load_dataset("csv", data_files="temp_dataset.csv")["train"].remove_columns(["Unnamed: 0"])
 
@@ -85,7 +86,7 @@ model = AutoModelForSequenceClassification.from_pretrained("bert-base-uncased", 
 #model = model.to('cuda:0')
 
 
-training_args = TrainingArguments("sst_model", evaluation_strategy="epoch", num_train_epochs=args.e, save_total_limit=2)
+training_args = TrainingArguments("sst_model", evaluation_strategy="epoch", num_train_epochs=args.epochs, save_total_limit=2)
 
 
 metric = load_metric("accuracy")
