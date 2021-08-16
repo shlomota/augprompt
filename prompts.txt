@@ -1,0 +1,9 @@
+In general, the film
+
+On the other hand, the film
+
+#order is
+#positive prompt
+#positive prefix
+#negative prompt
+#negative prefix
