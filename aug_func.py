@@ -5,6 +5,7 @@ import pandas as pd
 
 
 MAX_GEN_LEN = 100
+LEN_THRESH = 10
 
 print("started loading sst", flush=True)
 
@@ -50,7 +51,7 @@ def gen_from_prompt(prompt, mul, prefix):
 #   'n' - only augment negative examples (opposite label)
 #   'p' - only augment positive examples (same label)
 #   'b' - both (mul examples of each)
-def augment_data(dataset, mul, aug_type, dataset_file, prompt_file):
+def augment_data(dataset, mul, aug_type, dataset_file, prompt_file, filter_length=True):
     dataset.to_csv(dataset_file)
     df = pd.read_csv(dataset_file)
 
@@ -71,6 +72,8 @@ def augment_data(dataset, mul, aug_type, dataset_file, prompt_file):
         texts += [example["sentence"]]
         labels += [example["label"]]
 
+        if filter_length and len(example["sentence"].split()) < LEN_THRESH:
+            continue
         # add generated
         # positive
         if aug_type == 'p' or aug_type == 'b':
