@@ -17,6 +17,7 @@ import argparse
 parser = argparse.ArgumentParser()
 
 DATA_FILE = "/home/yandex/AMNLP2021/shlomotannor/data"
+DATA_FILE = "../"
 DATASET_FILE = "temp_dataset_film.csv"
 MODEL_FILE = "sst_model_100_film"
 PROMPT_FILE = "prompts.txt"
@@ -39,7 +40,7 @@ from aug_func import augment_data
 
 print("starting load", flush=True)
 
-raw_datasets = load_dataset("sst", data_dir=Path(data_file), cache_dir=Path(data_file))
+raw_datasets = load_dataset("sst", data_dir=Path(DATA_FILE), cache_dir=Path(DATA_FILE))
 raw_datasets = raw_datasets.remove_columns(["tokens", "tree"])
 
 print("finished load", flush=True)
