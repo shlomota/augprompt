@@ -30,7 +30,7 @@ parser.add_argument("-t", "--augment_type", default="b", type=str, help="use neg
 parser.add_argument("-m", "--multiplier", default=2, type=int, help="how many times to multiply each training example")
 parser.add_argument("-e", "--epochs",default=10, type=int, help="number of training epochs")
 parser.add_argument("-n", default=100, type=int, help="number of training examples")
-parser.add_argument("-f", default=False, type=bool, help="filter length")
+parser.add_argument("-f", default=False, type=bool, help="do filter length")
 #notes:
 #number of testing examples is always 100 now
 #maximum token generated is also always 100
@@ -48,7 +48,7 @@ print("finished load", flush=True)
 
 print(args)
 raw_datasets['train'] = raw_datasets["train"].shuffle(seed=42).select(range(args.n))
-raw_datasets['train'] = augment_data(raw_datasets['train'], args.multiplier, args.augment_type, DATASET_FILE, PROMPT_FILE, filter_length=args.f)
+raw_datasets['train'] = augment_data(raw_datasets['train'], args.multiplier, args.augment_type, DATASET_FILE, PROMPT_FILE, do_filter_length=args.f)
 print("finished augment", flush=True)
 #raw_datasets["train"] = load_dataset("csv", data_files="temp_dataset.csv")["train"].remove_columns(["Unnamed: 0"])
 

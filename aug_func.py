@@ -51,7 +51,7 @@ def gen_from_prompt(prompt, mul, prefix):
 #   'n' - only augment negative examples (opposite label)
 #   'p' - only augment positive examples (same label)
 #   'b' - both (mul examples of each)
-def augment_data(dataset, mul, aug_type, dataset_file, prompt_file, filter_length=True):
+def augment_data(dataset, mul, aug_type, dataset_file, prompt_file, do_filter_length=True):
     dataset.to_csv(dataset_file)
     df = pd.read_csv(dataset_file)
 
@@ -72,7 +72,7 @@ def augment_data(dataset, mul, aug_type, dataset_file, prompt_file, filter_lengt
         texts += [example["sentence"]]
         labels += [example["label"]]
 
-        if filter_length and len(example["sentence"].split()) < LEN_THRESH:
+        if mul == 0 or (do_filter_length and len(example["sentence"].split()) < LEN_THRESH):
             continue
         # add generated
         # positive
