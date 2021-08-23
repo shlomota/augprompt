@@ -81,7 +81,7 @@ orig_datasets = orig_datasets.remove_columns(["tokens", "tree"])
 
 print("finished load", flush=True)
 
-for iter in args.i:
+for iter in range(args.i):
     max_score = 0
     raw_datasets = orig_datasets.copy()
     raw_datasets['train'] = raw_datasets["train"].shuffle().select(range(args.n))
