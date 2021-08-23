@@ -69,10 +69,12 @@ def augment_data(dataset, mul, aug_type, dataset_file, prompt_file, do_filter_sc
     for i, example in df.iterrows():
         #pdb.set_trace()
         # added original to new dataset
+        if (do_filter_score and (0.3 < example["label"] < 0.7)) or (do_filter_length and len(example["sentence"].split()) < LEN_THRESH):
+            continue
         texts += [example["sentence"]]
         labels += [example["label"]]
 
-        if mul == 0 or (do_filter_score and (0.3 < example["label"] < 0.7)) or (do_filter_length and len(example["sentence"].split()) < LEN_THRESH):
+        if mul == 0
             continue
         # add generated
         # positive
@@ -93,7 +95,8 @@ def augment_data(dataset, mul, aug_type, dataset_file, prompt_file, do_filter_sc
         if i%5 == 0:
           new_df = pd.DataFrame(data=np.array([texts, labels]).T, columns=["sentence", "label"])
           new_df.to_csv(dataset_file)
-
+    
+    print("Final dataset size: " + str(len(texts))
     new_df = pd.DataFrame(data=np.array([texts, labels]).T, columns=["sentence", "label"])
     new_df.to_csv(dataset_file)
     #TODO: save df without index instead of removing column
