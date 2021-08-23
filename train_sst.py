@@ -15,6 +15,8 @@ import pandas as pd
 from datasets import ClassLabel, Value
 import argparse
 from aug_func import augment_data
+import copy
+
 parser = argparse.ArgumentParser()
 
 def is_university():
@@ -83,7 +85,7 @@ print("finished load", flush=True)
 
 for iter in range(args.i):
     max_score = 0
-    raw_datasets = orig_datasets.copy()
+    raw_datasets = copy.deepcopy(orig_datasets)
     raw_datasets['train'] = raw_datasets["train"].shuffle().select(range(args.n))
     raw_datasets['train'] = augment_data(raw_datasets['train'], args.multiplier, args.augment_type, DATASET_FILE, PROMPT_FILE, do_filter_score=args.s, do_filter_length=args.f)
     print("finished augment", flush=True)
