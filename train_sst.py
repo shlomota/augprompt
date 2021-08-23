@@ -16,6 +16,7 @@ from datasets import ClassLabel, Value
 import argparse
 from aug_func import augment_data
 import copy
+import random
 
 parser = argparse.ArgumentParser()
 
@@ -86,7 +87,8 @@ print("finished load", flush=True)
 for iter in range(args.i):
     max_score = 0
     raw_datasets = copy.deepcopy(orig_datasets)
-    raw_datasets['train'] = raw_datasets["train"].shuffle().select(range(args.n))
+    raw_datasets.shuffle(seed=random.randint(0, 1024))
+    raw_datasets['train'] = raw_datasets["train"].shuffle(seed=random.randint(0, 1024)).select(range(args.n))
     raw_datasets['train'] = augment_data(raw_datasets['train'], args.multiplier, args.augment_type, DATASET_FILE, PROMPT_FILE, do_filter_score=args.s, do_filter_length=args.f)
     print("finished augment", flush=True)
     #raw_datasets["train"] = load_dataset("csv", data_files="temp_dataset.csv")["train"].remove_columns(["Unnamed: 0"])
@@ -104,7 +106,7 @@ for iter in range(args.i):
 
 
     small_train_dataset = tokenized_datasets["train"]
-    small_eval_dataset = tokenized_datasets["test"].shuffle().select(range(100))
+    small_eval_dataset = tokenized_datasets["test"].shuffle(seed=random.randint(0, 1024)).select(range(100))
     training_args = TrainingArguments("sst_model", evaluation_strategy="epoch", save_strategy="epoch", num_train_epochs=args.epochs, save_total_limit=2, load_best_model_at_end=True, metric_for_best_model="eval_accuracy")
     metric = load_metric("accuracy")
     model = AutoModelForSequenceClassification.from_pretrained("bert-base-uncased", num_labels=2)
