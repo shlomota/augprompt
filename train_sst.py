@@ -116,6 +116,7 @@ for iter in range(args.i):
     )
     trainer.train()
     scores += [max_score]
+    print(max_score)
 
 
 final_score = sum(scores) / len(scores)
