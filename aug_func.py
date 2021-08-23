@@ -74,7 +74,7 @@ def augment_data(dataset, mul, aug_type, dataset_file, prompt_file, do_filter_sc
         texts += [example["sentence"]]
         labels += [example["label"]]
 
-        if mul == 0
+        if mul == 0:
             continue
         # add generated
         # positive
