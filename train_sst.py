@@ -105,12 +105,12 @@ for iter in range(args.i):
 
     small_train_dataset = tokenized_datasets["train"]
     small_eval_dataset = tokenized_datasets["test"].shuffle().select(range(100))
-    training_args = TrainingArguments("sst_model", evaluation_strategy="epoch", num_train_epochs=args.epochs, save_total_limit=2)
+    training_args = TrainingArguments("sst_model", evaluation_strategy="epoch", num_train_epochs=args.epochs, save_total_limit=2, load_best_model_at_end=True, metric_for_best_model="eval_accuracy")
     metric = load_metric("accuracy")
     model = AutoModelForSequenceClassification.from_pretrained("bert-base-uncased", num_labels=2)
 
     trainer = Trainer(
-        model=model, args=training_args, train_dataset=small_train_dataset, eval_dataset=small_eval_dataset, compute_metrics=compute_metrics, load_best_model_at_end=True, metric_for_best_model="eval_accuracy"
+        model=model, args=training_args, train_dataset=small_train_dataset, eval_dataset=small_eval_dataset, compute_metrics=compute_metrics
     )
     trainer.train()
     scores += [max_score]
