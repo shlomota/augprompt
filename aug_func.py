@@ -96,7 +96,7 @@ def augment_data(dataset, mul, aug_type, dataset_file, prompt_file, do_filter_sc
           new_df = pd.DataFrame(data=np.array([texts, labels]).T, columns=["sentence", "label"])
           new_df.to_csv(dataset_file)
     
-    print("Final dataset size: " + str(len(texts))
+    print("Final dataset size: " + str(len(texts)))
     new_df = pd.DataFrame(data=np.array([texts, labels]).T, columns=["sentence", "label"])
     new_df.to_csv(dataset_file)
     #TODO: save df without index instead of removing column
