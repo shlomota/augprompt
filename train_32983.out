@@ -1,0 +1,396 @@
+started loading sst
+done loading sst
+starting load
+finished load
+SEED IS:218
+SEED IS:154
+example num 0
+example num 1
+example num 2
+example num 3
+example num 6
+example num 8
+example num 9
+example num 14
+example num 15
+example num 16
+example num 17
+example num 18
+example num 19
+example num 23
+example num 27
+example num 29
+example num 32
+example num 35
+example num 38
+example num 39
+example num 40
+example num 46
+example num 47
+example num 48
+example num 49
+example num 50
+example num 51
+example num 53
+example num 54
+example num 57
+example num 58
+example num 59
+example num 60
+example num 61
+example num 62
+example num 63
+example num 65
+example num 66
+example num 67
+example num 68
+example num 70
+example num 71
+example num 73
+example num 75
+example num 77
+example num 80
+example num 82
+example num 85
+example num 89
+example num 90
+example num 91
+example num 92
+example num 94
+example num 95
+example num 96
+example num 98
+example num 99
+Final dataset size: 627
+Downloading and preparing dataset csv/default (download: Unknown size, generated: Unknown size, post-processed: Unknown size, total: Unknown size) to /a/home/cc/students/cs/shlomotannor/.cache/huggingface/datasets/csv/default-e50d0bcc90555ae2/0.0.0/e138af468cb14e747fb46a19c787ffcfa5170c821476d20d5304287ce12bbc23...
+Dataset csv downloaded and prepared to /a/home/cc/students/cs/shlomotannor/.cache/huggingface/datasets/csv/default-e50d0bcc90555ae2/0.0.0/e138af468cb14e747fb46a19c787ffcfa5170c821476d20d5304287ce12bbc23. Subsequent calls will reuse this data.
+finished augment
+SEED IS:827
+SEED IS:333
+{'eval_loss': 0.6927778124809265, 'eval_accuracy': 0.45, 'eval_runtime': 1.3982, 'eval_samples_per_second': 71.52, 'eval_steps_per_second': 9.298, 'epoch': 1.0}
+{'eval_loss': 0.6839512586593628, 'eval_accuracy': 0.62, 'eval_runtime': 1.2957, 'eval_samples_per_second': 77.176, 'eval_steps_per_second': 10.033, 'epoch': 2.0}
+{'eval_loss': 1.1684317588806152, 'eval_accuracy': 0.57, 'eval_runtime': 1.2661, 'eval_samples_per_second': 78.983, 'eval_steps_per_second': 10.268, 'epoch': 3.0}
+{'eval_loss': 1.3810464143753052, 'eval_accuracy': 0.64, 'eval_runtime': 1.2753, 'eval_samples_per_second': 78.412, 'eval_steps_per_second': 10.194, 'epoch': 4.0}
+{'eval_loss': 2.067669630050659, 'eval_accuracy': 0.53, 'eval_runtime': 1.2806, 'eval_samples_per_second': 78.085, 'eval_steps_per_second': 10.151, 'epoch': 5.0}
+{'eval_loss': 1.865733027458191, 'eval_accuracy': 0.6, 'eval_runtime': 1.296, 'eval_samples_per_second': 77.163, 'eval_steps_per_second': 10.031, 'epoch': 6.0}
+{'loss': 0.4055, 'learning_rate': 1.8354430379746836e-05, 'epoch': 6.33}
+{'eval_loss': 2.127181053161621, 'eval_accuracy': 0.6, 'eval_runtime': 1.2598, 'eval_samples_per_second': 79.38, 'eval_steps_per_second': 10.319, 'epoch': 7.0}
+{'eval_loss': 2.307041645050049, 'eval_accuracy': 0.59, 'eval_runtime': 1.2643, 'eval_samples_per_second': 79.096, 'eval_steps_per_second': 10.282, 'epoch': 8.0}
+{'eval_loss': 2.4133927822113037, 'eval_accuracy': 0.6, 'eval_runtime': 1.2671, 'eval_samples_per_second': 78.919, 'eval_steps_per_second': 10.259, 'epoch': 9.0}
+{'eval_loss': 2.429866075515747, 'eval_accuracy': 0.6, 'eval_runtime': 1.2652, 'eval_samples_per_second': 79.036, 'eval_steps_per_second': 10.275, 'epoch': 10.0}
+{'train_runtime': 531.7253, 'train_samples_per_second': 11.792, 'train_steps_per_second': 1.486, 'train_loss': 0.2828978936883468, 'epoch': 10.0}
+0.64
+SEED IS:718
+SEED IS:723
+example num 0
+example num 1
+example num 4
+example num 5
+example num 6
+example num 7
+example num 8
+example num 11
+example num 15
+example num 17
+example num 18
+example num 21
+example num 22
+example num 25
+example num 27
+example num 31
+example num 32
+example num 33
+example num 34
+example num 35
+example num 36
+example num 37
+example num 38
+example num 39
+example num 40
+example num 41
+example num 42
+example num 43
+example num 45
+example num 46
+example num 47
+example num 48
+example num 49
+example num 50
+example num 51
+example num 52
+example num 53
+example num 54
+example num 55
+example num 56
+example num 59
+example num 60
+example num 61
+example num 62
+example num 65
+example num 66
+example num 67
+example num 68
+example num 70
+example num 73
+example num 75
+example num 77
+example num 78
+example num 79
+example num 80
+example num 82
+example num 83
+example num 87
+example num 88
+example num 89
+example num 90
+example num 94
+example num 96
+example num 99
+Final dataset size: 704
+Downloading and preparing dataset csv/default (download: Unknown size, generated: Unknown size, post-processed: Unknown size, total: Unknown size) to /a/home/cc/students/cs/shlomotannor/.cache/huggingface/datasets/csv/default-69afa26d3f696b84/0.0.0/e138af468cb14e747fb46a19c787ffcfa5170c821476d20d5304287ce12bbc23...
+Dataset csv downloaded and prepared to /a/home/cc/students/cs/shlomotannor/.cache/huggingface/datasets/csv/default-69afa26d3f696b84/0.0.0/e138af468cb14e747fb46a19c787ffcfa5170c821476d20d5304287ce12bbc23. Subsequent calls will reuse this data.
+finished augment
+SEED IS:441
+SEED IS:828
+{'eval_loss': 0.698819637298584, 'eval_accuracy': 0.45, 'eval_runtime': 1.2902, 'eval_samples_per_second': 77.506, 'eval_steps_per_second': 10.076, 'epoch': 1.0}
+{'eval_loss': 0.6907828450202942, 'eval_accuracy': 0.51, 'eval_runtime': 1.2662, 'eval_samples_per_second': 78.978, 'eval_steps_per_second': 10.267, 'epoch': 2.0}
+{'eval_loss': 0.7159911394119263, 'eval_accuracy': 0.56, 'eval_runtime': 1.2887, 'eval_samples_per_second': 77.598, 'eval_steps_per_second': 10.088, 'epoch': 3.0}
+{'eval_loss': 0.6358910202980042, 'eval_accuracy': 0.69, 'eval_runtime': 1.2929, 'eval_samples_per_second': 77.346, 'eval_steps_per_second': 10.055, 'epoch': 4.0}
+{'eval_loss': 1.2858800888061523, 'eval_accuracy': 0.62, 'eval_runtime': 1.262, 'eval_samples_per_second': 79.241, 'eval_steps_per_second': 10.301, 'epoch': 5.0}
+{'loss': 0.5405, 'learning_rate': 2.1590909090909093e-05, 'epoch': 5.68}
+{'eval_loss': 1.8196423053741455, 'eval_accuracy': 0.6, 'eval_runtime': 1.2707, 'eval_samples_per_second': 78.694, 'eval_steps_per_second': 10.23, 'epoch': 6.0}
+{'eval_loss': 1.9228227138519287, 'eval_accuracy': 0.58, 'eval_runtime': 1.271, 'eval_samples_per_second': 78.68, 'eval_steps_per_second': 10.228, 'epoch': 7.0}
+{'eval_loss': 2.246382236480713, 'eval_accuracy': 0.59, 'eval_runtime': 1.2949, 'eval_samples_per_second': 77.224, 'eval_steps_per_second': 10.039, 'epoch': 8.0}
+{'eval_loss': 2.3067188262939453, 'eval_accuracy': 0.58, 'eval_runtime': 1.2888, 'eval_samples_per_second': 77.593, 'eval_steps_per_second': 10.087, 'epoch': 9.0}
+{'eval_loss': 2.372068405151367, 'eval_accuracy': 0.58, 'eval_runtime': 1.269, 'eval_samples_per_second': 78.804, 'eval_steps_per_second': 10.245, 'epoch': 10.0}
+{'train_runtime': 570.0662, 'train_samples_per_second': 12.349, 'train_steps_per_second': 1.544, 'train_loss': 0.3463259393518621, 'epoch': 10.0}
+0.69
+SEED IS:407
+SEED IS:299
+example num 3
+example num 6
+example num 8
+example num 9
+example num 10
+example num 11
+example num 12
+example num 13
+example num 15
+example num 19
+example num 20
+example num 22
+example num 23
+example num 26
+example num 27
+example num 28
+example num 31
+example num 33
+example num 35
+example num 36
+example num 43
+example num 44
+example num 45
+example num 46
+example num 49
+example num 50
+example num 51
+example num 52
+example num 54
+example num 55
+example num 56
+example num 57
+example num 59
+example num 62
+example num 63
+example num 64
+example num 66
+example num 67
+example num 68
+example num 75
+example num 82
+example num 84
+example num 86
+example num 87
+example num 89
+example num 90
+example num 93
+example num 96
+example num 97
+example num 99
+Final dataset size: 550
+Downloading and preparing dataset csv/default (download: Unknown size, generated: Unknown size, post-processed: Unknown size, total: Unknown size) to /a/home/cc/students/cs/shlomotannor/.cache/huggingface/datasets/csv/default-c75dde8cee8d8fa9/0.0.0/e138af468cb14e747fb46a19c787ffcfa5170c821476d20d5304287ce12bbc23...
+Dataset csv downloaded and prepared to /a/home/cc/students/cs/shlomotannor/.cache/huggingface/datasets/csv/default-c75dde8cee8d8fa9/0.0.0/e138af468cb14e747fb46a19c787ffcfa5170c821476d20d5304287ce12bbc23. Subsequent calls will reuse this data.
+finished augment
+SEED IS:162
+SEED IS:473
+{'eval_loss': 0.6888196468353271, 'eval_accuracy': 0.55, 'eval_runtime': 1.2771, 'eval_samples_per_second': 78.302, 'eval_steps_per_second': 10.179, 'epoch': 1.0}
+{'eval_loss': 0.656751811504364, 'eval_accuracy': 0.63, 'eval_runtime': 1.2548, 'eval_samples_per_second': 79.697, 'eval_steps_per_second': 10.361, 'epoch': 2.0}
+{'eval_loss': 0.6471154689788818, 'eval_accuracy': 0.61, 'eval_runtime': 1.2874, 'eval_samples_per_second': 77.678, 'eval_steps_per_second': 10.098, 'epoch': 3.0}
+{'eval_loss': 1.1441166400909424, 'eval_accuracy': 0.6, 'eval_runtime': 1.2631, 'eval_samples_per_second': 79.172, 'eval_steps_per_second': 10.292, 'epoch': 4.0}
+{'eval_loss': 1.7030471563339233, 'eval_accuracy': 0.6, 'eval_runtime': 1.2856, 'eval_samples_per_second': 77.783, 'eval_steps_per_second': 10.112, 'epoch': 5.0}
+{'eval_loss': 1.6321731805801392, 'eval_accuracy': 0.65, 'eval_runtime': 1.286, 'eval_samples_per_second': 77.762, 'eval_steps_per_second': 10.109, 'epoch': 6.0}
+{'eval_loss': 1.8283578157424927, 'eval_accuracy': 0.64, 'eval_runtime': 1.6195, 'eval_samples_per_second': 61.749, 'eval_steps_per_second': 8.027, 'epoch': 7.0}
+{'loss': 0.3831, 'learning_rate': 1.3768115942028985e-05, 'epoch': 7.25}
+{'eval_loss': 1.759352445602417, 'eval_accuracy': 0.67, 'eval_runtime': 1.2588, 'eval_samples_per_second': 79.44, 'eval_steps_per_second': 10.327, 'epoch': 8.0}
+{'eval_loss': 1.7781192064285278, 'eval_accuracy': 0.68, 'eval_runtime': 1.3069, 'eval_samples_per_second': 76.518, 'eval_steps_per_second': 9.947, 'epoch': 9.0}
+{'eval_loss': 1.8515937328338623, 'eval_accuracy': 0.66, 'eval_runtime': 1.2768, 'eval_samples_per_second': 78.321, 'eval_steps_per_second': 10.182, 'epoch': 10.0}
+{'train_runtime': 590.0766, 'train_samples_per_second': 9.321, 'train_steps_per_second': 1.169, 'train_loss': 0.28578168343806615, 'epoch': 10.0}
+0.68
+SEED IS:688
+SEED IS:701
+example num 0
+example num 1
+example num 2
+example num 4
+example num 5
+example num 11
+example num 12
+example num 13
+example num 14
+example num 16
+example num 17
+example num 18
+example num 21
+example num 25
+example num 29
+example num 30
+example num 31
+example num 32
+example num 33
+example num 34
+example num 38
+example num 39
+example num 41
+example num 42
+example num 45
+example num 48
+example num 49
+example num 50
+example num 53
+example num 54
+example num 55
+example num 60
+example num 61
+example num 62
+example num 68
+example num 70
+example num 78
+example num 79
+example num 80
+example num 82
+example num 85
+example num 86
+example num 87
+example num 89
+example num 90
+example num 91
+example num 93
+example num 96
+example num 98
+example num 99
+Final dataset size: 550
+Downloading and preparing dataset csv/default (download: Unknown size, generated: Unknown size, post-processed: Unknown size, total: Unknown size) to /a/home/cc/students/cs/shlomotannor/.cache/huggingface/datasets/csv/default-85bff0f227322e09/0.0.0/e138af468cb14e747fb46a19c787ffcfa5170c821476d20d5304287ce12bbc23...
+Dataset csv downloaded and prepared to /a/home/cc/students/cs/shlomotannor/.cache/huggingface/datasets/csv/default-85bff0f227322e09/0.0.0/e138af468cb14e747fb46a19c787ffcfa5170c821476d20d5304287ce12bbc23. Subsequent calls will reuse this data.
+finished augment
+SEED IS:110
+SEED IS:14
+{'eval_loss': 0.624960720539093, 'eval_accuracy': 0.75, 'eval_runtime': 1.2701, 'eval_samples_per_second': 78.734, 'eval_steps_per_second': 10.235, 'epoch': 1.0}
+{'eval_loss': 0.7192052602767944, 'eval_accuracy': 0.6, 'eval_runtime': 1.2845, 'eval_samples_per_second': 77.849, 'eval_steps_per_second': 10.12, 'epoch': 2.0}
+{'eval_loss': 0.9760267734527588, 'eval_accuracy': 0.54, 'eval_runtime': 1.2578, 'eval_samples_per_second': 79.504, 'eval_steps_per_second': 10.336, 'epoch': 3.0}
+{'eval_loss': 1.1530393362045288, 'eval_accuracy': 0.69, 'eval_runtime': 1.263, 'eval_samples_per_second': 79.176, 'eval_steps_per_second': 10.293, 'epoch': 4.0}
+{'eval_loss': 1.112903356552124, 'eval_accuracy': 0.71, 'eval_runtime': 1.2642, 'eval_samples_per_second': 79.099, 'eval_steps_per_second': 10.283, 'epoch': 5.0}
+{'eval_loss': 1.4098652601242065, 'eval_accuracy': 0.68, 'eval_runtime': 1.2712, 'eval_samples_per_second': 78.668, 'eval_steps_per_second': 10.227, 'epoch': 6.0}
+{'eval_loss': 1.6665819883346558, 'eval_accuracy': 0.72, 'eval_runtime': 1.2882, 'eval_samples_per_second': 77.626, 'eval_steps_per_second': 10.091, 'epoch': 7.0}
+{'loss': 0.3124, 'learning_rate': 1.3768115942028985e-05, 'epoch': 7.25}
+{'eval_loss': 1.3565853834152222, 'eval_accuracy': 0.69, 'eval_runtime': 1.2861, 'eval_samples_per_second': 77.756, 'eval_steps_per_second': 10.108, 'epoch': 8.0}
+{'eval_loss': 1.4026434421539307, 'eval_accuracy': 0.69, 'eval_runtime': 1.2905, 'eval_samples_per_second': 77.488, 'eval_steps_per_second': 10.073, 'epoch': 9.0}
+{'eval_loss': 1.3344027996063232, 'eval_accuracy': 0.73, 'eval_runtime': 1.2635, 'eval_samples_per_second': 79.148, 'eval_steps_per_second': 10.289, 'epoch': 10.0}
+{'train_runtime': 491.267, 'train_samples_per_second': 11.196, 'train_steps_per_second': 1.405, 'train_loss': 0.24182445000911104, 'epoch': 10.0}
+0.75
+SEED IS:218
+SEED IS:505
+example num 0
+example num 1
+example num 2
+example num 3
+example num 4
+example num 6
+example num 7
+example num 8
+example num 9
+example num 10
+example num 11
+example num 12
+example num 13
+example num 15
+example num 16
+example num 17
+example num 20
+example num 21
+example num 22
+example num 23
+example num 24
+example num 25
+example num 26
+example num 27
+example num 28
+example num 29
+example num 30
+example num 32
+example num 33
+example num 34
+example num 35
+example num 36
+example num 37
+example num 38
+example num 41
+example num 42
+example num 44
+example num 45
+example num 48
+example num 49
+example num 52
+example num 54
+example num 55
+example num 58
+example num 60
+example num 61
+example num 62
+example num 65
+example num 66
+example num 67
+example num 72
+example num 74
+example num 77
+example num 78
+example num 80
+example num 81
+example num 84
+example num 85
+example num 87
+example num 89
+example num 90
+example num 91
+example num 94
+example num 95
+example num 96
+example num 98
+Final dataset size: 726
+Downloading and preparing dataset csv/default (download: Unknown size, generated: Unknown size, post-processed: Unknown size, total: Unknown size) to /a/home/cc/students/cs/shlomotannor/.cache/huggingface/datasets/csv/default-4f9950c79ba7bfc8/0.0.0/e138af468cb14e747fb46a19c787ffcfa5170c821476d20d5304287ce12bbc23...
+Dataset csv downloaded and prepared to /a/home/cc/students/cs/shlomotannor/.cache/huggingface/datasets/csv/default-4f9950c79ba7bfc8/0.0.0/e138af468cb14e747fb46a19c787ffcfa5170c821476d20d5304287ce12bbc23. Subsequent calls will reuse this data.
+finished augment
+SEED IS:555
+SEED IS:523
+{'eval_loss': 0.6913918852806091, 'eval_accuracy': 0.46, 'eval_runtime': 5.2662, 'eval_samples_per_second': 18.989, 'eval_steps_per_second': 2.469, 'epoch': 1.0}
+{'eval_loss': 0.7040862441062927, 'eval_accuracy': 0.47, 'eval_runtime': 1.2758, 'eval_samples_per_second': 78.383, 'eval_steps_per_second': 10.19, 'epoch': 2.0}
+{'eval_loss': 0.6552619338035583, 'eval_accuracy': 0.71, 'eval_runtime': 1.2593, 'eval_samples_per_second': 79.407, 'eval_steps_per_second': 10.323, 'epoch': 3.0}
+{'eval_loss': 0.5633283853530884, 'eval_accuracy': 0.78, 'eval_runtime': 1.2663, 'eval_samples_per_second': 78.972, 'eval_steps_per_second': 10.266, 'epoch': 4.0}
+{'eval_loss': 0.8857337832450867, 'eval_accuracy': 0.73, 'eval_runtime': 1.2779, 'eval_samples_per_second': 78.251, 'eval_steps_per_second': 10.173, 'epoch': 5.0}
+{'loss': 0.5011, 'learning_rate': 2.252747252747253e-05, 'epoch': 5.49}
+{'eval_loss': 1.2993500232696533, 'eval_accuracy': 0.73, 'eval_runtime': 1.2673, 'eval_samples_per_second': 78.905, 'eval_steps_per_second': 10.258, 'epoch': 6.0}
+{'eval_loss': 1.4628188610076904, 'eval_accuracy': 0.66, 'eval_runtime': 1.272, 'eval_samples_per_second': 78.617, 'eval_steps_per_second': 10.22, 'epoch': 7.0}
+{'eval_loss': 1.4083359241485596, 'eval_accuracy': 0.66, 'eval_runtime': 1.27, 'eval_samples_per_second': 78.74, 'eval_steps_per_second': 10.236, 'epoch': 8.0}
+{'eval_loss': 1.3239238262176514, 'eval_accuracy': 0.69, 'eval_runtime': 1.2715, 'eval_samples_per_second': 78.645, 'eval_steps_per_second': 10.224, 'epoch': 9.0}
+{'eval_loss': 1.2923774719238281, 'eval_accuracy': 0.73, 'eval_runtime': 1.2727, 'eval_samples_per_second': 78.574, 'eval_steps_per_second': 10.215, 'epoch': 10.0}
+{'train_runtime': 645.3175, 'train_samples_per_second': 11.25, 'train_steps_per_second': 1.41, 'train_loss': 0.33046678815569197, 'epoch': 10.0}
+0.78

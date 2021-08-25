@@ -1,0 +1,1040 @@
+/home/yandex/AMNLP2021/shlomotannor/anaconda3/envs/amnlp/lib/python3.7/site-packages/torchaudio/backend/utils.py:54: UserWarning: "sox" backend is being deprecated. The default backend will be changed to "sox_io" backend in 0.8.0 and "sox" backend will be removed in 0.9.0. Please migrate to "sox_io" backend. Please refer to https://github.com/pytorch/audio/issues/903 for the detail.
+  '"sox" backend is being deprecated. '
+Using custom data configuration default-bffd5994dba40be2
+Reusing dataset sst (/home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff)
+Using custom data configuration default-dc7771541965b4ae
+0 tables [00:00, ? tables/s]                              0%|          | 0/1 [00:00<?, ?ba/s]100%|██████████| 1/1 [00:00<00:00, 14.25ba/s]
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-35bfd9f04e6658c3.arrow
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-04edea8e5deaac23.arrow
+  0%|          | 0/1 [00:00<?, ?ba/s]100%|██████████| 1/1 [00:00<00:00, 11.67ba/s]
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-80dea3fb3755f005.arrow
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-1f098d744ad3e451.arrow
+  0%|          | 0/1 [00:00<?, ?ba/s]100%|██████████| 1/1 [00:00<00:00, 13.04ba/s]
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-523194a38c7f88f6.arrow
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-487f6c90d30222c9.arrow
+Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForSequenceClassification: ['cls.seq_relationship.weight', 'cls.predictions.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.weight']
+- This IS expected if you are initializing BertForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+The following columns in the training set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running training *****
+  Num examples = 59
+  Num Epochs = 10
+  Instantaneous batch size per device = 8
+  Total train batch size (w. parallel, distributed & accumulation) = 8
+  Gradient Accumulation steps = 1
+  Total optimization steps = 80
+  0%|          | 0/80 [00:00<?, ?it/s]  1%|▏         | 1/80 [00:03<04:23,  3.34s/it]  2%|▎         | 2/80 [00:03<02:06,  1.62s/it]  4%|▍         | 3/80 [00:04<01:22,  1.07s/it]  5%|▌         | 4/80 [00:04<01:01,  1.23it/s]  6%|▋         | 5/80 [00:05<00:50,  1.49it/s]  8%|▊         | 6/80 [00:05<00:43,  1.72it/s]  9%|▉         | 7/80 [00:05<00:38,  1.89it/s] 10%|█         | 8/80 [00:06<00:30,  2.36it/s]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 13.96it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.06it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.18it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  7.98it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.83it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.73it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.64it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.58it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.53it/s][A                                              
+                                               [A 10%|█         | 8/80 [00:07<00:30,  2.36it/s]
+100%|██████████| 13/13 [00:01<00:00,  7.53it/s][A
+                                               [ASaving model checkpoint to sst_model/checkpoint-8
+Configuration saved in sst_model/checkpoint-8/config.json
+Model weights saved in sst_model/checkpoint-8/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-63] due to args.save_total_limit
+ 11%|█▏        | 9/80 [00:22<06:28,  5.47s/it] 12%|█▎        | 10/80 [00:23<04:33,  3.91s/it] 14%|█▍        | 11/80 [00:23<03:16,  2.84s/it] 15%|█▌        | 12/80 [00:23<02:22,  2.10s/it] 16%|█▋        | 13/80 [00:24<01:46,  1.59s/it] 18%|█▊        | 14/80 [00:24<01:21,  1.24s/it] 19%|█▉        | 15/80 [00:25<01:04,  1.01it/s] 20%|██        | 16/80 [00:25<00:48,  1.33it/s]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.61it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.31it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.39it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.12it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.87it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.71it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.58it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.50it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.48it/s][A                                               
+                                               [A 20%|██        | 16/80 [00:27<00:48,  1.33it/s]
+100%|██████████| 13/13 [00:01<00:00,  7.48it/s][A
+                                               [ASaving model checkpoint to sst_model/checkpoint-16
+Configuration saved in sst_model/checkpoint-16/config.json
+Model weights saved in sst_model/checkpoint-16/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-70] due to args.save_total_limit
+ 21%|██▏       | 17/80 [00:41<05:44,  5.47s/it] 22%|██▎       | 18/80 [00:42<04:05,  3.96s/it] 24%|██▍       | 19/80 [00:42<02:56,  2.90s/it] 25%|██▌       | 20/80 [00:43<02:09,  2.16s/it] 26%|██▋       | 21/80 [00:43<01:36,  1.64s/it] 28%|██▊       | 22/80 [00:43<01:13,  1.27s/it] 29%|██▉       | 23/80 [00:44<00:57,  1.02s/it] 30%|███       | 24/80 [00:44<00:43,  1.30it/s]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.93it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.33it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.30it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.05it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.88it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.73it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.64it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.57it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.48it/s][A                                               
+                                               [A 30%|███       | 24/80 [00:46<00:43,  1.30it/s]
+100%|██████████| 13/13 [00:01<00:00,  7.48it/s][A
+                                               [ASaving model checkpoint to sst_model/checkpoint-24
+Configuration saved in sst_model/checkpoint-24/config.json
+Model weights saved in sst_model/checkpoint-24/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-8] due to args.save_total_limit
+ 31%|███▏      | 25/80 [01:00<04:59,  5.45s/it] 32%|███▎      | 26/80 [01:01<03:32,  3.94s/it] 34%|███▍      | 27/80 [01:01<02:32,  2.88s/it] 35%|███▌      | 28/80 [01:02<01:51,  2.14s/it] 36%|███▋      | 29/80 [01:02<01:22,  1.63s/it] 38%|███▊      | 30/80 [01:02<01:03,  1.26s/it] 39%|███▉      | 31/80 [01:03<00:49,  1.01s/it] 40%|████      | 32/80 [01:03<00:36,  1.31it/s]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.81it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.41it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.37it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.10it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.89it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.73it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.60it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.57it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.53it/s][A                                               
+                                               [A 40%|████      | 32/80 [01:05<00:36,  1.31it/s]
+100%|██████████| 13/13 [00:01<00:00,  7.53it/s][A
+                                               [ASaving model checkpoint to sst_model/checkpoint-32
+Configuration saved in sst_model/checkpoint-32/config.json
+Model weights saved in sst_model/checkpoint-32/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-16] due to args.save_total_limit
+ 41%|████▏     | 33/80 [01:25<05:34,  7.13s/it] 42%|████▎     | 34/80 [01:25<03:55,  5.11s/it] 44%|████▍     | 35/80 [01:26<02:46,  3.70s/it] 45%|████▌     | 36/80 [01:26<01:59,  2.72s/it] 46%|████▋     | 37/80 [01:27<01:27,  2.03s/it] 48%|████▊     | 38/80 [01:27<01:04,  1.54s/it] 49%|████▉     | 39/80 [01:28<00:49,  1.21s/it] 50%|█████     | 40/80 [01:28<00:36,  1.10it/s]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.98it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.39it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.38it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.11it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.91it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.80it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.62it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.58it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.55it/s][A                                               
+                                               [A 50%|█████     | 40/80 [01:29<00:36,  1.10it/s]
+100%|██████████| 13/13 [00:01<00:00,  7.55it/s][A
+                                               [ASaving model checkpoint to sst_model/checkpoint-40
+Configuration saved in sst_model/checkpoint-40/config.json
+Model weights saved in sst_model/checkpoint-40/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-24] due to args.save_total_limit
+ 51%|█████▏    | 41/80 [01:54<05:32,  8.52s/it] 52%|█████▎    | 42/80 [01:54<03:51,  6.09s/it] 54%|█████▍    | 43/80 [01:55<02:42,  4.39s/it] 55%|█████▌    | 44/80 [01:55<01:55,  3.20s/it] 56%|█████▋    | 45/80 [01:56<01:22,  2.36s/it] 57%|█████▊    | 46/80 [01:56<01:00,  1.77s/it] 59%|█████▉    | 47/80 [01:57<00:45,  1.37s/it] 60%|██████    | 48/80 [01:57<00:32,  1.01s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.59it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.20it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.31it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.05it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.86it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.73it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.61it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.53it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.48it/s][A                                               
+                                               [A 60%|██████    | 48/80 [01:58<00:32,  1.01s/it]
+100%|██████████| 13/13 [00:01<00:00,  7.48it/s][A
+                                               [ASaving model checkpoint to sst_model/checkpoint-48
+Configuration saved in sst_model/checkpoint-48/config.json
+Model weights saved in sst_model/checkpoint-48/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-40] due to args.save_total_limit
+ 61%|██████▏   | 49/80 [02:33<05:57, 11.52s/it] 62%|██████▎   | 50/80 [02:33<04:05,  8.18s/it] 64%|██████▍   | 51/80 [02:34<02:49,  5.85s/it] 65%|██████▌   | 52/80 [02:34<01:58,  4.22s/it] 66%|██████▋   | 53/80 [02:34<01:23,  3.08s/it] 68%|██████▊   | 54/80 [02:35<00:59,  2.28s/it] 69%|██████▉   | 55/80 [02:35<00:42,  1.72s/it] 70%|███████   | 56/80 [02:35<00:30,  1.26s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.89it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.31it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.34it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.08it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.92it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.77it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.71it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.62it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.53it/s][A                                               
+                                               [A 70%|███████   | 56/80 [02:37<00:30,  1.26s/it]
+100%|██████████| 13/13 [00:01<00:00,  7.53it/s][A
+                                               [ASaving model checkpoint to sst_model/checkpoint-56
+Configuration saved in sst_model/checkpoint-56/config.json
+Model weights saved in sst_model/checkpoint-56/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-48] due to args.save_total_limit
+ 71%|███████▏  | 57/80 [03:12<04:35, 11.97s/it] 72%|███████▎  | 58/80 [03:13<03:07,  8.51s/it] 74%|███████▍  | 59/80 [03:13<02:07,  6.09s/it] 75%|███████▌  | 60/80 [03:14<01:27,  4.39s/it] 76%|███████▋  | 61/80 [03:14<01:00,  3.21s/it] 78%|███████▊  | 62/80 [03:15<00:42,  2.37s/it] 79%|███████▉  | 63/80 [03:15<00:30,  1.79s/it] 80%|████████  | 64/80 [03:15<00:20,  1.31s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.64it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.31it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.36it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.06it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.91it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.75it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.65it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.63it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.59it/s][A                                               
+                                               [A 80%|████████  | 64/80 [03:17<00:20,  1.31s/it]
+100%|██████████| 13/13 [00:01<00:00,  7.59it/s][A
+                                               [ASaving model checkpoint to sst_model/checkpoint-64
+Configuration saved in sst_model/checkpoint-64/config.json
+Model weights saved in sst_model/checkpoint-64/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-56] due to args.save_total_limit
+ 81%|████████▏ | 65/80 [03:46<02:34, 10.27s/it] 82%|████████▎ | 66/80 [03:47<01:42,  7.31s/it] 84%|████████▍ | 67/80 [03:47<01:08,  5.24s/it] 85%|████████▌ | 68/80 [03:48<00:45,  3.79s/it] 86%|████████▋ | 69/80 [03:48<00:30,  2.78s/it] 88%|████████▊ | 70/80 [03:48<00:20,  2.07s/it] 89%|████████▉ | 71/80 [03:49<00:14,  1.57s/it] 90%|█████████ | 72/80 [03:49<00:09,  1.16s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.67it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.23it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.29it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.05it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.87it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.75it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.64it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.56it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.49it/s][A                                               
+                                               [A 90%|█████████ | 72/80 [03:51<00:09,  1.16s/it]
+100%|██████████| 13/13 [00:01<00:00,  7.49it/s][A
+                                               [ASaving model checkpoint to sst_model/checkpoint-72
+Configuration saved in sst_model/checkpoint-72/config.json
+Model weights saved in sst_model/checkpoint-72/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-64] due to args.save_total_limit
+ 91%|█████████▏| 73/80 [04:32<01:35, 13.70s/it] 92%|█████████▎| 74/80 [04:32<00:58,  9.71s/it] 94%|█████████▍| 75/80 [04:33<00:34,  6.92s/it] 95%|█████████▌| 76/80 [04:33<00:19,  4.97s/it] 96%|█████████▋| 77/80 [04:34<00:10,  3.60s/it] 98%|█████████▊| 78/80 [04:34<00:05,  2.64s/it] 99%|█████████▉| 79/80 [04:34<00:01,  1.97s/it]100%|██████████| 80/80 [04:35<00:00,  1.44s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.74it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.37it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.40it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.14it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.97it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.81it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.69it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.55it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.50it/s][A                                               
+                                               [A100%|██████████| 80/80 [04:37<00:00,  1.44s/it]
+100%|██████████| 13/13 [00:02<00:00,  7.50it/s][A
+                                               [ASaving model checkpoint to sst_model/checkpoint-80
+Configuration saved in sst_model/checkpoint-80/config.json
+Model weights saved in sst_model/checkpoint-80/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-72] due to args.save_total_limit
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+Loading best model from sst_model/checkpoint-32 (score: 0.79).
+                                               100%|██████████| 80/80 [05:59<00:00,  1.44s/it]100%|██████████| 80/80 [05:59<00:00,  4.50s/it]
+Using custom data configuration default-a51d2b957808124e
+0 tables [00:00, ? tables/s]                            loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.8.2",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
+loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
+loading file https://huggingface.co/bert-base-uncased/resolve/main/added_tokens.json from cache at None
+loading file https://huggingface.co/bert-base-uncased/resolve/main/special_tokens_map.json from cache at None
+loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79
+  0%|          | 0/1 [00:00<?, ?ba/s]100%|██████████| 1/1 [00:00<00:00,  2.63ba/s]100%|██████████| 1/1 [00:00<00:00,  2.63ba/s]
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-35bfd9f04e6658c3.arrow
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-04edea8e5deaac23.arrow
+  0%|          | 0/1 [00:00<?, ?ba/s]100%|██████████| 1/1 [00:00<00:00,  2.15ba/s]100%|██████████| 1/1 [00:00<00:00,  2.15ba/s]
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-80dea3fb3755f005.arrow
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-1f098d744ad3e451.arrow
+  0%|          | 0/1 [00:00<?, ?ba/s]100%|██████████| 1/1 [00:00<00:00,  2.13ba/s]100%|██████████| 1/1 [00:00<00:00,  2.13ba/s]
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-523194a38c7f88f6.arrow
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-487f6c90d30222c9.arrow
+PyTorch: setting up devices
+The default value for the training argument `--report_to` will change in v5 (from all installed integrations to none). In v5, you will need to use `--report_to all` to get the same behavior as now. You should start updating your code and make this info disappear :-).
+loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.8.2",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+loading weights file https://huggingface.co/bert-base-uncased/resolve/main/pytorch_model.bin from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/a8041bf617d7f94ea26d15e218abd04afc2004805632abc0ed2066aa16d50d04.faf6ea826ae9c5867d12b22257f9877e6b8367890837bd60f7c54a29633f7f2f
+Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForSequenceClassification: ['cls.seq_relationship.weight', 'cls.predictions.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.weight']
+- This IS expected if you are initializing BertForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+The following columns in the training set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running training *****
+  Num examples = 55
+  Num Epochs = 10
+  Instantaneous batch size per device = 8
+  Total train batch size (w. parallel, distributed & accumulation) = 8
+  Gradient Accumulation steps = 1
+  Total optimization steps = 70
+  0%|          | 0/70 [00:00<?, ?it/s]  1%|▏         | 1/70 [00:00<00:32,  2.14it/s]  3%|▎         | 2/70 [00:00<00:29,  2.34it/s]  4%|▍         | 3/70 [00:01<00:31,  2.15it/s]  6%|▌         | 4/70 [00:01<00:29,  2.26it/s]  7%|▋         | 5/70 [00:02<00:27,  2.35it/s]  9%|▊         | 6/70 [00:02<00:27,  2.37it/s] 10%|█         | 7/70 [00:02<00:25,  2.45it/s]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.84it/s][A
+ 31%|███       | 4/13 [00:00<00:01,  8.72it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.05it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  7.90it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.80it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.67it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.65it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.59it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.53it/s][A
+                                               [A                                              
+100%|██████████| 13/13 [00:01<00:00,  7.53it/s][A 10%|█         | 7/70 [00:05<00:25,  2.45it/s]
+                                               [ASaving model checkpoint to sst_model/checkpoint-7
+Configuration saved in sst_model/checkpoint-7/config.json
+Model weights saved in sst_model/checkpoint-7/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-32] due to args.save_total_limit
+ 11%|█▏        | 8/70 [00:24<07:18,  7.07s/it] 13%|█▎        | 9/70 [00:24<05:04,  4.99s/it] 14%|█▍        | 10/70 [00:25<03:34,  3.58s/it] 16%|█▌        | 11/70 [00:25<02:33,  2.61s/it] 17%|█▋        | 12/70 [00:25<01:52,  1.94s/it] 19%|█▊        | 13/70 [00:26<01:24,  1.48s/it] 20%|██        | 14/70 [00:26<01:04,  1.14s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.70it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.33it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.36it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.09it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.90it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.68it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.41it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.37it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.36it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.36it/s][A 20%|██        | 14/70 [00:28<01:04,  1.14s/it]
+                                               [ASaving model checkpoint to sst_model/checkpoint-14
+Configuration saved in sst_model/checkpoint-14/config.json
+Model weights saved in sst_model/checkpoint-14/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-80] due to args.save_total_limit
+ 21%|██▏       | 15/70 [00:48<06:42,  7.32s/it] 23%|██▎       | 16/70 [00:48<04:43,  5.25s/it] 24%|██▍       | 17/70 [00:49<03:21,  3.80s/it] 26%|██▌       | 18/70 [00:49<02:24,  2.78s/it] 27%|██▋       | 19/70 [00:50<01:45,  2.07s/it] 29%|██▊       | 20/70 [00:50<01:18,  1.57s/it] 30%|███       | 21/70 [00:50<00:59,  1.21s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.71it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.41it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.37it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.10it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.89it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.77it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.69it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.54it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.45it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.45it/s][A 30%|███       | 21/70 [00:52<00:59,  1.21s/it]
+                                               [ASaving model checkpoint to sst_model/checkpoint-21
+Configuration saved in sst_model/checkpoint-21/config.json
+Model weights saved in sst_model/checkpoint-21/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-7] due to args.save_total_limit
+ 31%|███▏      | 22/70 [01:12<05:58,  7.47s/it] 33%|███▎      | 23/70 [01:13<04:11,  5.35s/it] 34%|███▍      | 24/70 [01:13<02:58,  3.87s/it] 36%|███▌      | 25/70 [01:14<02:07,  2.83s/it] 37%|███▋      | 26/70 [01:14<01:32,  2.11s/it] 39%|███▊      | 27/70 [01:14<01:08,  1.60s/it] 40%|████      | 28/70 [01:15<00:51,  1.23s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.50it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.33it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.31it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.07it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.90it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.78it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.71it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.62it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.51it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.51it/s][A 40%|████      | 28/70 [01:17<00:51,  1.23s/it]
+                                               [ASaving model checkpoint to sst_model/checkpoint-28
+Configuration saved in sst_model/checkpoint-28/config.json
+Model weights saved in sst_model/checkpoint-28/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-21] due to args.save_total_limit
+ 41%|████▏     | 29/70 [01:35<04:40,  6.84s/it] 43%|████▎     | 30/70 [01:35<03:16,  4.91s/it] 44%|████▍     | 31/70 [01:36<02:18,  3.56s/it] 46%|████▌     | 32/70 [01:36<01:39,  2.62s/it] 47%|████▋     | 33/70 [01:36<01:12,  1.96s/it] 49%|████▊     | 34/70 [01:37<00:53,  1.49s/it] 50%|█████     | 35/70 [01:37<00:40,  1.15s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.95it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.35it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.36it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.13it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.91it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.73it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.63it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.55it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.43it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.43it/s][A 50%|█████     | 35/70 [01:39<00:40,  1.15s/it]
+                                               [ASaving model checkpoint to sst_model/checkpoint-35
+Configuration saved in sst_model/checkpoint-35/config.json
+Model weights saved in sst_model/checkpoint-35/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-14] due to args.save_total_limit
+ 51%|█████▏    | 36/70 [01:54<03:16,  5.77s/it] 53%|█████▎    | 37/70 [01:54<02:17,  4.16s/it] 54%|█████▍    | 38/70 [01:55<01:37,  3.03s/it] 56%|█████▌    | 39/70 [01:55<01:09,  2.25s/it] 57%|█████▋    | 40/70 [01:55<00:50,  1.70s/it] 59%|█████▊    | 41/70 [01:56<00:38,  1.31s/it] 60%|██████    | 42/70 [01:56<00:28,  1.03s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.73it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.26it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.36it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.09it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.89it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.74it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.68it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.61it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.53it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.53it/s][A 60%|██████    | 42/70 [01:58<00:28,  1.03s/it]
+                                               [ASaving model checkpoint to sst_model/checkpoint-42
+Configuration saved in sst_model/checkpoint-42/config.json
+Model weights saved in sst_model/checkpoint-42/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-28] due to args.save_total_limit
+ 61%|██████▏   | 43/70 [02:15<02:53,  6.42s/it] 63%|██████▎   | 44/70 [02:16<02:00,  4.62s/it] 64%|██████▍   | 45/70 [02:16<01:23,  3.35s/it] 66%|██████▌   | 46/70 [02:16<00:59,  2.47s/it] 67%|██████▋   | 47/70 [02:17<00:42,  1.86s/it] 69%|██████▊   | 48/70 [02:17<00:31,  1.42s/it] 70%|███████   | 49/70 [02:18<00:23,  1.11s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.65it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.29it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.28it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.05it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.84it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.73it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.60it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.50it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.44it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.44it/s][A 70%|███████   | 49/70 [02:19<00:23,  1.11s/it]
+                                               [ASaving model checkpoint to sst_model/checkpoint-49
+Configuration saved in sst_model/checkpoint-49/config.json
+Model weights saved in sst_model/checkpoint-49/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-35] due to args.save_total_limit
+ 71%|███████▏  | 50/70 [02:34<01:55,  5.78s/it] 73%|███████▎  | 51/70 [02:35<01:19,  4.16s/it] 74%|███████▍  | 52/70 [02:35<00:54,  3.04s/it] 76%|███████▌  | 53/70 [02:35<00:38,  2.25s/it] 77%|███████▋  | 54/70 [02:36<00:27,  1.70s/it] 79%|███████▊  | 55/70 [02:36<00:19,  1.31s/it] 80%|████████  | 56/70 [02:37<00:14,  1.02s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.91it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.44it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.35it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.13it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.93it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.78it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.67it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.58it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.49it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.49it/s][A 80%|████████  | 56/70 [02:38<00:14,  1.02s/it]
+                                               [ASaving model checkpoint to sst_model/checkpoint-56
+Configuration saved in sst_model/checkpoint-56/config.json
+Model weights saved in sst_model/checkpoint-56/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-49] due to args.save_total_limit
+ 81%|████████▏ | 57/70 [02:53<01:14,  5.70s/it] 83%|████████▎ | 58/70 [02:54<00:49,  4.11s/it] 84%|████████▍ | 59/70 [02:54<00:33,  3.00s/it] 86%|████████▌ | 60/70 [02:54<00:22,  2.23s/it] 87%|████████▋ | 61/70 [02:55<00:15,  1.68s/it] 89%|████████▊ | 62/70 [02:55<00:10,  1.30s/it] 90%|█████████ | 63/70 [02:56<00:07,  1.02s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.52it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.36it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.32it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.07it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.92it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.77it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.70it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.60it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.56it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.56it/s][A 90%|█████████ | 63/70 [02:57<00:07,  1.02s/it]
+                                               [ASaving model checkpoint to sst_model/checkpoint-63
+Configuration saved in sst_model/checkpoint-63/config.json
+Model weights saved in sst_model/checkpoint-63/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-56] due to args.save_total_limit
+ 91%|█████████▏| 64/70 [03:12<00:33,  5.64s/it] 93%|█████████▎| 65/70 [03:13<00:20,  4.07s/it] 94%|█████████▍| 66/70 [03:13<00:11,  2.97s/it] 96%|█████████▌| 67/70 [03:13<00:06,  2.21s/it] 97%|█████████▋| 68/70 [03:14<00:03,  1.67s/it] 99%|█████████▊| 69/70 [03:14<00:01,  1.29s/it]100%|██████████| 70/70 [03:15<00:00,  1.01s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 15.02it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.47it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.44it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.14it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.97it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.80it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.71it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.63it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.58it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.58it/s][A100%|██████████| 70/70 [03:16<00:00,  1.01s/it]
+                                               [ASaving model checkpoint to sst_model/checkpoint-70
+Configuration saved in sst_model/checkpoint-70/config.json
+Model weights saved in sst_model/checkpoint-70/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-63] due to args.save_total_limit
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+Loading best model from sst_model/checkpoint-42 (score: 0.63).
+                                               100%|██████████| 70/70 [03:50<00:00,  1.01s/it]100%|██████████| 70/70 [03:50<00:00,  3.29s/it]
+Using custom data configuration default-8829d78fe8e855f4
+0 tables [00:00, ? tables/s]                            loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.8.2",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
+loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
+loading file https://huggingface.co/bert-base-uncased/resolve/main/added_tokens.json from cache at None
+loading file https://huggingface.co/bert-base-uncased/resolve/main/special_tokens_map.json from cache at None
+loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79
+  0%|          | 0/1 [00:00<?, ?ba/s]100%|██████████| 1/1 [00:00<00:00, 32.34ba/s]
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-35bfd9f04e6658c3.arrow
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-04edea8e5deaac23.arrow
+  0%|          | 0/1 [00:00<?, ?ba/s]100%|██████████| 1/1 [00:00<00:00, 14.76ba/s]
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-80dea3fb3755f005.arrow
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-1f098d744ad3e451.arrow
+  0%|          | 0/1 [00:00<?, ?ba/s]100%|██████████| 1/1 [00:00<00:00, 16.58ba/s]
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-523194a38c7f88f6.arrow
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-487f6c90d30222c9.arrow
+PyTorch: setting up devices
+The default value for the training argument `--report_to` will change in v5 (from all installed integrations to none). In v5, you will need to use `--report_to all` to get the same behavior as now. You should start updating your code and make this info disappear :-).
+loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.8.2",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+loading weights file https://huggingface.co/bert-base-uncased/resolve/main/pytorch_model.bin from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/a8041bf617d7f94ea26d15e218abd04afc2004805632abc0ed2066aa16d50d04.faf6ea826ae9c5867d12b22257f9877e6b8367890837bd60f7c54a29633f7f2f
+Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForSequenceClassification: ['cls.seq_relationship.weight', 'cls.predictions.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.weight']
+- This IS expected if you are initializing BertForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+The following columns in the training set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running training *****
+  Num examples = 63
+  Num Epochs = 10
+  Instantaneous batch size per device = 8
+  Total train batch size (w. parallel, distributed & accumulation) = 8
+  Gradient Accumulation steps = 1
+  Total optimization steps = 80
+  0%|          | 0/80 [00:00<?, ?it/s]  1%|▏         | 1/80 [00:00<00:36,  2.17it/s]  2%|▎         | 2/80 [00:00<00:33,  2.32it/s]  4%|▍         | 3/80 [00:01<00:32,  2.39it/s]  5%|▌         | 4/80 [00:01<00:31,  2.40it/s]  6%|▋         | 5/80 [00:02<00:31,  2.40it/s]  8%|▊         | 6/80 [00:02<00:30,  2.40it/s]  9%|▉         | 7/80 [00:02<00:30,  2.42it/s] 10%|█         | 8/80 [00:03<00:28,  2.54it/s]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.73it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.38it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.40it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.06it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.91it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.78it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.71it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.64it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.61it/s][A
+                                               [A                                              
+100%|██████████| 13/13 [00:01<00:00,  7.61it/s][A 10%|█         | 8/80 [00:04<00:28,  2.54it/s]
+                                               [ASaving model checkpoint to sst_model/checkpoint-8
+Configuration saved in sst_model/checkpoint-8/config.json
+Model weights saved in sst_model/checkpoint-8/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-42] due to args.save_total_limit
+ 11%|█▏        | 9/80 [00:19<06:24,  5.42s/it] 12%|█▎        | 10/80 [00:20<04:31,  3.88s/it] 14%|█▍        | 11/80 [00:20<03:14,  2.82s/it] 15%|█▌        | 12/80 [00:20<02:21,  2.09s/it] 16%|█▋        | 13/80 [00:21<01:45,  1.58s/it] 18%|█▊        | 14/80 [00:21<01:20,  1.22s/it] 19%|█▉        | 15/80 [00:22<01:03,  1.02it/s] 20%|██        | 16/80 [00:22<00:50,  1.26it/s]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.67it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.32it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.38it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.15it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.96it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.84it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.76it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.68it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.58it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.58it/s][A 20%|██        | 16/80 [00:24<00:50,  1.26it/s]
+                                               [ASaving model checkpoint to sst_model/checkpoint-16
+Configuration saved in sst_model/checkpoint-16/config.json
+Model weights saved in sst_model/checkpoint-16/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-70] due to args.save_total_limit
+ 21%|██▏       | 17/80 [00:50<09:21,  8.91s/it] 22%|██▎       | 18/80 [00:50<06:33,  6.35s/it] 24%|██▍       | 19/80 [00:51<04:39,  4.58s/it] 25%|██▌       | 20/80 [00:51<03:19,  3.33s/it] 26%|██▋       | 21/80 [00:52<02:24,  2.46s/it] 28%|██▊       | 22/80 [00:52<01:46,  1.84s/it] 29%|██▉       | 23/80 [00:52<01:20,  1.42s/it] 30%|███       | 24/80 [00:53<01:01,  1.10s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.74it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.32it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.40it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.14it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.98it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.81it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.73it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.66it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.58it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.58it/s][A 30%|███       | 24/80 [00:54<01:01,  1.10s/it]
+                                               [ASaving model checkpoint to sst_model/checkpoint-24
+Configuration saved in sst_model/checkpoint-24/config.json
+Model weights saved in sst_model/checkpoint-24/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-8] due to args.save_total_limit
+ 31%|███▏      | 25/80 [01:32<11:25, 12.46s/it] 32%|███▎      | 26/80 [01:32<07:57,  8.85s/it] 34%|███▍      | 27/80 [01:33<05:34,  6.32s/it] 35%|███▌      | 28/80 [01:33<03:56,  4.55s/it] 36%|███▋      | 29/80 [01:33<02:49,  3.32s/it] 38%|███▊      | 30/80 [01:34<02:02,  2.45s/it] 39%|███▉      | 31/80 [01:34<01:29,  1.84s/it] 40%|████      | 32/80 [01:35<01:06,  1.39s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.63it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.30it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.30it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.03it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.86it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.77it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.65it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.57it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.56it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.56it/s][A 40%|████      | 32/80 [01:36<01:06,  1.39s/it]
+                                               [ASaving model checkpoint to sst_model/checkpoint-32
+Configuration saved in sst_model/checkpoint-32/config.json
+Model weights saved in sst_model/checkpoint-32/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-16] due to args.save_total_limit
+ 41%|████▏     | 33/80 [02:19<11:14, 14.36s/it] 42%|████▎     | 34/80 [02:20<07:47, 10.17s/it] 44%|████▍     | 35/80 [02:20<05:26,  7.25s/it] 45%|████▌     | 36/80 [02:20<03:48,  5.20s/it] 46%|████▋     | 37/80 [02:21<02:41,  3.76s/it] 48%|████▊     | 38/80 [02:21<01:55,  2.76s/it] 49%|████▉     | 39/80 [02:22<01:24,  2.06s/it] 50%|█████     | 40/80 [02:22<01:02,  1.55s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.58it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.33it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.32it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.07it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.89it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.73it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.63it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.54it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.47it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.47it/s][A 50%|█████     | 40/80 [02:24<01:02,  1.55s/it]
+                                               [ASaving model checkpoint to sst_model/checkpoint-40
+Configuration saved in sst_model/checkpoint-40/config.json
+Model weights saved in sst_model/checkpoint-40/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-24] due to args.save_total_limit
+ 51%|█████▏    | 41/80 [03:01<08:21, 12.85s/it] 52%|█████▎    | 42/80 [03:02<05:46,  9.12s/it] 54%|█████▍    | 43/80 [03:02<04:00,  6.51s/it] 55%|█████▌    | 44/80 [03:03<02:48,  4.68s/it] 56%|█████▋    | 45/80 [03:03<01:58,  3.40s/it] 57%|█████▊    | 46/80 [03:03<01:25,  2.50s/it] 59%|█████▉    | 47/80 [03:04<01:01,  1.88s/it] 60%|██████    | 48/80 [03:04<00:45,  1.42s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.53it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.26it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.18it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  7.99it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.82it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.64it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.59it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.52it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.43it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.43it/s][A 60%|██████    | 48/80 [03:06<00:45,  1.42s/it]
+                                               [ASaving model checkpoint to sst_model/checkpoint-48
+Configuration saved in sst_model/checkpoint-48/config.json
+Model weights saved in sst_model/checkpoint-48/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-40] due to args.save_total_limit
+ 61%|██████▏   | 49/80 [03:23<03:22,  6.53s/it] 62%|██████▎   | 50/80 [03:23<02:20,  4.69s/it] 64%|██████▍   | 51/80 [03:23<01:39,  3.42s/it] 65%|██████▌   | 52/80 [03:24<01:10,  2.52s/it] 66%|██████▋   | 53/80 [03:24<00:50,  1.88s/it] 68%|██████▊   | 54/80 [03:25<00:37,  1.44s/it] 69%|██████▉   | 55/80 [03:25<00:28,  1.13s/it] 70%|███████   | 56/80 [03:25<00:21,  1.11it/s]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.98it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.42it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.39it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.03it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.86it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.73it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.65it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.58it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.51it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.51it/s][A 70%|███████   | 56/80 [03:27<00:21,  1.11it/s]
+                                               [ASaving model checkpoint to sst_model/checkpoint-56
+Configuration saved in sst_model/checkpoint-56/config.json
+Model weights saved in sst_model/checkpoint-56/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-48] due to args.save_total_limit
+ 71%|███████▏  | 57/80 [04:42<09:03, 23.63s/it] 72%|███████▎  | 58/80 [04:43<06:06, 16.67s/it] 74%|███████▍  | 59/80 [04:43<04:07, 11.79s/it] 75%|███████▌  | 60/80 [04:43<02:47,  8.38s/it] 76%|███████▋  | 61/80 [04:44<01:53,  5.99s/it] 78%|███████▊  | 62/80 [04:44<01:17,  4.31s/it] 79%|███████▉  | 63/80 [04:45<00:53,  3.14s/it] 80%|████████  | 64/80 [04:45<00:36,  2.31s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 15.14it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.40it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.35it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.06it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.89it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.77it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.64it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.57it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.53it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.53it/s][A 80%|████████  | 64/80 [04:47<00:36,  2.31s/it]
+                                               [ASaving model checkpoint to sst_model/checkpoint-64
+Configuration saved in sst_model/checkpoint-64/config.json
+Model weights saved in sst_model/checkpoint-64/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-56] due to args.save_total_limit
+ 81%|████████▏ | 65/80 [05:11<02:22,  9.53s/it] 82%|████████▎ | 66/80 [05:12<01:35,  6.79s/it] 84%|████████▍ | 67/80 [05:12<01:03,  4.88s/it] 85%|████████▌ | 68/80 [05:13<00:42,  3.54s/it] 86%|████████▋ | 69/80 [05:13<00:28,  2.60s/it] 88%|████████▊ | 70/80 [05:13<00:19,  1.94s/it] 89%|████████▉ | 71/80 [05:14<00:13,  1.48s/it] 90%|█████████ | 72/80 [05:14<00:09,  1.15s/it]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.36it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.28it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.33it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.08it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.88it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.75it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.60it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.54it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.54it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.54it/s][A 90%|█████████ | 72/80 [05:16<00:09,  1.15s/it]
+                                               [ASaving model checkpoint to sst_model/checkpoint-72
+Configuration saved in sst_model/checkpoint-72/config.json
+Model weights saved in sst_model/checkpoint-72/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-64] due to args.save_total_limit
+ 91%|█████████▏| 73/80 [05:32<00:42,  6.14s/it] 92%|█████████▎| 74/80 [05:32<00:26,  4.42s/it] 94%|█████████▍| 75/80 [05:33<00:16,  3.22s/it] 95%|█████████▌| 76/80 [05:33<00:09,  2.37s/it] 96%|█████████▋| 77/80 [05:34<00:05,  1.78s/it] 98%|█████████▊| 78/80 [05:34<00:02,  1.37s/it] 99%|█████████▉| 79/80 [05:34<00:01,  1.08s/it]100%|██████████| 80/80 [05:35<00:00,  1.15it/s]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 15.05it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.39it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.32it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.04it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.87it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.74it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.63it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.51it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.48it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.48it/s][A100%|██████████| 80/80 [05:36<00:00,  1.15it/s]
+                                               [ASaving model checkpoint to sst_model/checkpoint-80
+Configuration saved in sst_model/checkpoint-80/config.json
+Model weights saved in sst_model/checkpoint-80/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-72] due to args.save_total_limit
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+Loading best model from sst_model/checkpoint-32 (score: 0.8).
+                                               100%|██████████| 80/80 [05:51<00:00,  1.15it/s]100%|██████████| 80/80 [05:51<00:00,  4.40s/it]
+Using custom data configuration default-67651e2e79c902c4
+0 tables [00:00, ? tables/s]                            loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.8.2",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
+loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
+loading file https://huggingface.co/bert-base-uncased/resolve/main/added_tokens.json from cache at None
+loading file https://huggingface.co/bert-base-uncased/resolve/main/special_tokens_map.json from cache at None
+loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79
+  0%|          | 0/1 [00:00<?, ?ba/s]100%|██████████| 1/1 [00:00<00:00, 33.36ba/s]
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-35bfd9f04e6658c3.arrow
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-04edea8e5deaac23.arrow
+  0%|          | 0/1 [00:00<?, ?ba/s]100%|██████████| 1/1 [00:00<00:00, 16.46ba/s]
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-80dea3fb3755f005.arrow
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-1f098d744ad3e451.arrow
+  0%|          | 0/1 [00:00<?, ?ba/s]100%|██████████| 1/1 [00:00<00:00, 17.57ba/s]
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-523194a38c7f88f6.arrow
+Loading cached processed dataset at /home/yandex/AMNLP2021/shlomotannor/data/sst/default-bffd5994dba40be2/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff/cache-487f6c90d30222c9.arrow
+PyTorch: setting up devices
+The default value for the training argument `--report_to` will change in v5 (from all installed integrations to none). In v5, you will need to use `--report_to all` to get the same behavior as now. You should start updating your code and make this info disappear :-).
+loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.8.2",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+loading weights file https://huggingface.co/bert-base-uncased/resolve/main/pytorch_model.bin from cache at /a/home/cc/students/cs/shlomotannor/.cache/huggingface/transformers/a8041bf617d7f94ea26d15e218abd04afc2004805632abc0ed2066aa16d50d04.faf6ea826ae9c5867d12b22257f9877e6b8367890837bd60f7c54a29633f7f2f
+Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForSequenceClassification: ['cls.seq_relationship.weight', 'cls.predictions.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.weight']
+- This IS expected if you are initializing BertForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+The following columns in the training set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running training *****
+  Num examples = 60
+  Num Epochs = 10
+  Instantaneous batch size per device = 8
+  Total train batch size (w. parallel, distributed & accumulation) = 8
+  Gradient Accumulation steps = 1
+  Total optimization steps = 80
+  0%|          | 0/80 [00:00<?, ?it/s]  1%|▏         | 1/80 [00:00<00:36,  2.16it/s]  2%|▎         | 2/80 [00:00<00:33,  2.31it/s]  4%|▍         | 3/80 [00:01<00:32,  2.36it/s]  5%|▌         | 4/80 [00:01<00:31,  2.40it/s]  6%|▋         | 5/80 [00:02<00:31,  2.40it/s]  8%|▊         | 6/80 [00:02<00:30,  2.41it/s]  9%|▉         | 7/80 [00:02<00:30,  2.38it/s] 10%|█         | 8/80 [00:03<00:26,  2.74it/s]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 15.01it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.36it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.27it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.01it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.79it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.65it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.55it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.47it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.45it/s][A
+                                               [A                                              
+100%|██████████| 13/13 [00:01<00:00,  7.45it/s][A 10%|█         | 8/80 [00:04<00:26,  2.74it/s]
+                                               [ASaving model checkpoint to sst_model/checkpoint-8
+Configuration saved in sst_model/checkpoint-8/config.json
+Model weights saved in sst_model/checkpoint-8/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-32] due to args.save_total_limit
+ 11%|█▏        | 9/80 [00:19<06:24,  5.41s/it] 12%|█▎        | 10/80 [00:20<04:30,  3.87s/it] 14%|█▍        | 11/80 [00:20<03:14,  2.81s/it] 15%|█▌        | 12/80 [00:20<02:21,  2.08s/it] 16%|█▋        | 13/80 [00:21<01:45,  1.57s/it] 18%|█▊        | 14/80 [00:21<01:21,  1.23s/it] 19%|█▉        | 15/80 [00:22<01:03,  1.02it/s] 20%|██        | 16/80 [00:22<00:48,  1.32it/s]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.77it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.32it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.35it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.08it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.89it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.69it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.59it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.54it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.49it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.49it/s][A 20%|██        | 16/80 [00:24<00:48,  1.32it/s]
+                                               [ASaving model checkpoint to sst_model/checkpoint-16
+Configuration saved in sst_model/checkpoint-16/config.json
+Model weights saved in sst_model/checkpoint-16/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-80] due to args.save_total_limit
+ 21%|██▏       | 17/80 [00:38<05:45,  5.48s/it] 22%|██▎       | 18/80 [00:39<04:05,  3.96s/it] 24%|██▍       | 19/80 [00:39<02:56,  2.90s/it] 25%|██▌       | 20/80 [00:40<02:08,  2.15s/it] 26%|██▋       | 21/80 [00:40<01:36,  1.63s/it] 28%|██▊       | 22/80 [00:40<01:13,  1.26s/it] 29%|██▉       | 23/80 [00:41<00:57,  1.01s/it] 30%|███       | 24/80 [00:41<00:43,  1.28it/s]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.66it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.30it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.31it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.06it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.80it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.67it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.58it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.50it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.50it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.50it/s][A 30%|███       | 24/80 [00:43<00:43,  1.28it/s]
+                                               [ASaving model checkpoint to sst_model/checkpoint-24
+Configuration saved in sst_model/checkpoint-24/config.json
+Model weights saved in sst_model/checkpoint-24/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-8] due to args.save_total_limit
+ 31%|███▏      | 25/80 [00:58<05:02,  5.51s/it] 32%|███▎      | 26/80 [00:58<03:34,  3.98s/it] 34%|███▍      | 27/80 [00:59<02:34,  2.91s/it] 35%|███▌      | 28/80 [00:59<01:52,  2.16s/it] 36%|███▋      | 29/80 [00:59<01:23,  1.64s/it] 38%|███▊      | 30/80 [01:00<01:03,  1.27s/it] 39%|███▉      | 31/80 [01:00<00:49,  1.01s/it] 40%|████      | 32/80 [01:00<00:37,  1.28it/s]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 15.03it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.42it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.44it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.16it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.98it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.85it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.77it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.68it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.63it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.63it/s][A 40%|████      | 32/80 [01:02<00:37,  1.28it/s]
+                                               [ASaving model checkpoint to sst_model/checkpoint-32
+Configuration saved in sst_model/checkpoint-32/config.json
+Model weights saved in sst_model/checkpoint-32/pytorch_model.bin
+Deleting older checkpoint [sst_model/checkpoint-16] due to args.save_total_limit
+Deleting older checkpoint [sst_model/checkpoint-24] due to args.save_total_limit
+ 41%|████▏     | 33/80 [01:17<04:20,  5.54s/it] 42%|████▎     | 34/80 [01:17<03:04,  4.00s/it] 44%|████▍     | 35/80 [01:18<02:11,  2.92s/it] 45%|████▌     | 36/80 [01:18<01:35,  2.17s/it] 46%|████▋     | 37/80 [01:19<01:10,  1.64s/it] 48%|████▊     | 38/80 [01:19<00:53,  1.28s/it] 49%|████▉     | 39/80 [01:20<00:41,  1.02s/it] 50%|█████     | 40/80 [01:20<00:31,  1.28it/s]The following columns in the evaluation set  don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: sentence.
+***** Running Evaluation *****
+  Num examples = 100
+  Batch size = 8
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:00<00:00, 14.70it/s][A
+ 31%|███       | 4/13 [00:00<00:00,  9.39it/s][A
+ 46%|████▌     | 6/13 [00:00<00:00,  8.43it/s][A
+ 54%|█████▍    | 7/13 [00:00<00:00,  8.18it/s][A
+ 62%|██████▏   | 8/13 [00:00<00:00,  7.99it/s][A
+ 69%|██████▉   | 9/13 [00:01<00:00,  7.86it/s][A
+ 77%|███████▋  | 10/13 [00:01<00:00,  7.78it/s][A
+ 85%|████████▍ | 11/13 [00:01<00:00,  7.66it/s][A
+ 92%|█████████▏| 12/13 [00:01<00:00,  7.61it/s][A
+                                               [A                                               
+100%|██████████| 13/13 [00:01<00:00,  7.61it/s][A 50%|█████     | 40/80 [01:21<00:31,  1.28it/s]
+                                               [ASaving model checkpoint to sst_model/checkpoint-40
+Configuration saved in sst_model/checkpoint-40/config.json
+Model weights saved in sst_model/checkpoint-40/pytorch_model.bin
+Traceback (most recent call last):
+  File "train_sst.py", line 128, in <module>
+    trainer.train()
+  File "/home/yandex/AMNLP2021/shlomotannor/anaconda3/envs/amnlp/lib/python3.7/site-packages/transformers/trainer.py", line 1331, in train
+    self._maybe_log_save_evaluate(tr_loss, model, trial, epoch)
+  File "/home/yandex/AMNLP2021/shlomotannor/anaconda3/envs/amnlp/lib/python3.7/site-packages/transformers/trainer.py", line 1430, in _maybe_log_save_evaluate
+    self._save_checkpoint(model, trial, metrics=metrics)
+  File "/home/yandex/AMNLP2021/shlomotannor/anaconda3/envs/amnlp/lib/python3.7/site-packages/transformers/trainer.py", line 1574, in _save_checkpoint
+    self._rotate_checkpoints(use_mtime=True, output_dir=run_dir)
+  File "/home/yandex/AMNLP2021/shlomotannor/anaconda3/envs/amnlp/lib/python3.7/site-packages/transformers/trainer.py", line 1967, in _rotate_checkpoints
+    checkpoints_sorted = self._sorted_checkpoints(use_mtime=use_mtime, output_dir=output_dir)
+  File "/home/yandex/AMNLP2021/shlomotannor/anaconda3/envs/amnlp/lib/python3.7/site-packages/transformers/trainer.py", line 1957, in _sorted_checkpoints
+    best_model_index = checkpoints_sorted.index(str(Path(self.state.best_model_checkpoint)))
+ValueError: 'sst_model/checkpoint-32' is not in list

@@ -1,6 +1,6 @@
 import numpy as np
 from datasets import load_dataset
-from transformers import pipeline, set_seed
+from transformers import pipeline
 import pandas as pd
 
 

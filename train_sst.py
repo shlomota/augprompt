@@ -87,10 +87,15 @@ print("finished load", flush=True)
 for iter in range(args.i):
     max_score = 0
     raw_datasets = copy.deepcopy(orig_datasets)
-    raw_datasets.shuffle(seed=random.randint(0, 1024), load_from_cache_file=False)
-    raw_datasets['train'] = raw_datasets["train"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(args.n))
+    curr_seed = random.randint(0, 1024)
+    print("SEED IS:" + str(curr_seed))
+    raw_datasets.shuffle(seed=curr_seed, load_from_cache_file=False)
+    curr_seed = random.randint(0, 1024)
+    print("SEED IS:" + str(curr_seed))
+    raw_datasets['train'] = raw_datasets["train"].shuffle(seed=curr_seed, load_from_cache_file=False).select(range(args.n))
     raw_datasets['train'] = augment_data(raw_datasets['train'], args.multiplier, args.augment_type, DATASET_FILE, PROMPT_FILE, do_filter_score=args.s, do_filter_length=args.f)
     print("finished augment", flush=True)
+    
     #raw_datasets["train"] = load_dataset("csv", data_files="temp_dataset.csv")["train"].remove_columns(["Unnamed: 0"])
 
     #raw_datasets["train"]["label"] # list(map(lambda x: int(x>0.5), raw_datasets["train"]["label"]))
@@ -104,16 +109,22 @@ for iter in range(args.i):
     new_features["label"] = Value('int32')
     tokenized_datasets = tokenized_datasets.cast(new_features)
 
-
     small_train_dataset = tokenized_datasets["train"]
-    small_eval_dataset = tokenized_datasets["test"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(100))
-    training_args = TrainingArguments("sst_model", evaluation_strategy="epoch", save_strategy="epoch", num_train_epochs=args.epochs, save_total_limit=2, load_best_model_at_end=True, metric_for_best_model="eval_accuracy")
+    curr_seed = random.randint(0, 1024)
+    print("SEED IS:" + str(curr_seed))
+    small_eval_dataset = tokenized_datasets["test"].shuffle(seed=curr_seed, load_from_cache_file=False).select(range(100))
+    curr_seed = random.randint(0, 1024)
+    print("SEED IS:" + str(curr_seed))
+    training_args = TrainingArguments("sst_model", evaluation_strategy="epoch", save_strategy="epoch", num_train_epochs=args.epochs, save_total_limit=2, load_best_model_at_end=True, metric_for_best_model="eval_accuracy", seed=curr_seed)
     metric = load_metric("accuracy")
+    
     model = AutoModelForSequenceClassification.from_pretrained("bert-base-uncased", num_labels=2)
+    #upper limit - here there was no problem
 
     trainer = Trainer(
         model=model, args=training_args, train_dataset=small_train_dataset, eval_dataset=small_eval_dataset, compute_metrics=compute_metrics
     )
+    #lower limit
     trainer.train()
     scores += [max_score]
     print(max_score)
