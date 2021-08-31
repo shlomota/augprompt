@@ -1,17 +1,12 @@
 import numpy as np
 from datasets import load_dataset
-from transformers import pipeline
+from transformers import pipeline, set_seed
 import pandas as pd
-
 
 MAX_GEN_LEN = 100
 LEN_THRESH = 10
 
-print("started loading sst", flush=True)
-
 generator = pipeline('text-generation', model='gpt2')
-
-print("done loading sst", flush=True)
 
 def find_end_of_sentence(sen):
     for i in range(2, len(sen)-2):
@@ -51,7 +46,7 @@ def gen_from_prompt(prompt, mul, prefix):
 #   'n' - only augment negative examples (opposite label)
 #   'p' - only augment positive examples (same label)
 #   'b' - both (mul examples of each)
-def augment_data(dataset, mul, aug_type, dataset_file, prompt_file, do_filter_score=True, do_filter_length=False):
+def augment_data(task, features, dataset, mul, aug_type, dataset_file, prompt_file, do_filter_score=True, do_filter_length=False, filter_out_example = lambda x: False, label_keyword='label'):
     dataset.to_csv(dataset_file)
     df = pd.read_csv(dataset_file)
 
@@ -63,41 +58,85 @@ def augment_data(dataset, mul, aug_type, dataset_file, prompt_file, do_filter_sc
     n_prompt = prompt_lines[2]
     n_prefix = prompt_lines[3]
     
-    texts = []
+    example_features = []
     labels = []
 
     for i, example in df.iterrows():
+        if filter_out_example(example) or (do_filter_score and (0.3 < example[label_keyword] < 0.7)) or (do_filter_length and len(example["sentence"].split()) < LEN_THRESH):
+            continue
+
         #pdb.set_trace()
         # added original to new dataset
-        if (do_filter_score and (0.3 < example["label"] < 0.7)) or (do_filter_length and len(example["sentence"].split()) < LEN_THRESH):
-            continue
-        texts += [example["sentence"]]
-        labels += [example["label"]]
+        if task == "quora":
+            example_features.append([example[features[0][0]], example[features[0][1]]])
+        else:
+            example_features.append([example[f] for f in features])
+        labels.append(example[label_keyword])
 
         if mul == 0:
             continue
-        # add generated
-        # positive
-        if aug_type == 'p' or aug_type == 'b':
-            prompt = example["sentence"] + " " + p_prompt
-            gen_examples = gen_from_prompt(prompt, mul, p_prefix)
-            texts += gen_examples
-            labels += [example["label"]]*len(gen_examples)
 
-        # negative
-        if aug_type == 'n' or aug_type == 'b':
-            prompt = example["sentence"] + " " + n_prompt
+        # add generated
+
+        if task == 'sst':
+          # positive
+          if aug_type == 'p' or aug_type == 'b':
+              prompt = example["sentence"] + " " + p_prompt
+              gen_examples = gen_from_prompt(prompt, mul, p_prefix)
+              example_features += [[ge] for ge in gen_examples]
+              labels += [example[label_keyword]]*len(gen_examples)
+
+          # negative
+          if aug_type == 'n' or aug_type == 'b':
+              prompt = example["sentence"] + " " + n_prompt
+              gen_examples = gen_from_prompt(prompt, mul, n_prefix)
+              example_features += [[ge] for ge in gen_examples]
+              labels += [1-example[label_keyword]]*len(gen_examples)
+
+        elif task == 'mnli':
+            premise = example["premise"]
+            #positive
+            prompt = premise + " " + p_prompt
+            gen_examples = gen_from_prompt(prompt, mul, p_prefix)
+            example_features += [[premise, ge] for ge in gen_examples]
+            labels += [0]*len(gen_examples)
+
+            # negative
+            prompt = premise + " " + n_prompt
             gen_examples = gen_from_prompt(prompt, mul, n_prefix)
-            texts += gen_examples
-            labels += [1-example["label"]]*len(gen_examples)
-        
+            example_features += [[premise, ge] for ge in gen_examples]
+            labels += [2]*len(gen_examples)
+
+            #neutral - generate random sentence :D
+            prompt = ""
+            gen_examples = gen_from_prompt("prompt", mul, "")
+            example_features += [[premise, ge] for ge in gen_examples]
+            labels += [1]*len(gen_examples)
+
+        elif task == "quora":
+            sent1 = example["text"][0]
+            #positive
+            prompt = sent1 + " " + p_prompt
+            gen_examples = gen_from_prompt(prompt, mul, p_prefix)
+            example_features += [[sent1, ge] for ge in gen_examples]
+            labels += [int(example[label_keyword])]*len(gen_examples)
+
+            # negative
+            prompt = sent1 + " " + n_prompt
+            gen_examples = gen_from_prompt(prompt, mul, n_prefix)
+            example_features += [[sent1, ge] for ge in gen_examples]
+            labels += [1-int(example[label_keyword])]*len(gen_examples)
+
+
+
         print("example num " + str(i), flush=True)
-        if i%5 == 0:
-          new_df = pd.DataFrame(data=np.array([texts, labels]).T, columns=["sentence", "label"])
-          new_df.to_csv(dataset_file)
-    
-    print("Final dataset size: " + str(len(texts)))
-    new_df = pd.DataFrame(data=np.array([texts, labels]).T, columns=["sentence", "label"])
+        #if False and i%5 == 0:
+        #  new_df = pd.DataFrame(data=np.array([example_features, labels]).T, columns = features+[label_keyword)
+        #  new_df.to_csv(dataset_file)
+
+    labels = np.expand_dims(np.array(labels), 1)
+    example_features = np.array([*example_features])
+    new_df = pd.DataFrame(data = np.hstack([example_features, labels]) , columns = features + [label_keyword])
     new_df.to_csv(dataset_file)
     #TODO: save df without index instead of removing column
     dataset = load_dataset("csv", data_files=dataset_file)["train"].remove_columns(["Unnamed: 0"])
