@@ -41,6 +41,9 @@ def gen_from_prompt(prompt, mul, prefix):
     return res
 
 
+def postprocess(text):
+    return text.strip()
+
 # mul - how many examples to generate from each example
 # aug_type:
 #   'n' - only augment negative examples (opposite label)
@@ -67,10 +70,10 @@ def augment_data(task, features, dataset, mul, aug_type, dataset_file, prompt_fi
 
         #pdb.set_trace()
         # added original to new dataset
-        if task == "quora":
-            example_features.append([example[features[0][0]], example[features[0][1]]])
-        else:
-            example_features.append([example[f] for f in features])
+        # if task == "quora":
+        #     example_features.append([example[features[0]], example[features[1]]])
+        # else:
+        example_features.append([example[f] for f in features])
         labels.append(example[label_keyword])
 
         if mul == 0:
@@ -114,17 +117,18 @@ def augment_data(task, features, dataset, mul, aug_type, dataset_file, prompt_fi
             labels += [1]*len(gen_examples)
 
         elif task == "quora":
-            sent1 = example["text"][0]
+            text1 = example["text1"]
             #positive
-            prompt = sent1 + " " + p_prompt
+            prompt = text1 + " " + p_prompt
             gen_examples = gen_from_prompt(prompt, mul, p_prefix)
-            example_features += [[sent1, ge] for ge in gen_examples]
+            example_features += [[text1, postprocess(ge)] for ge in gen_examples]
             labels += [int(example[label_keyword])]*len(gen_examples)
 
             # negative
-            prompt = sent1 + " " + n_prompt
+            text1 = example["text2"] # for the sake of variety
+            prompt = text1 + " " + n_prompt
             gen_examples = gen_from_prompt(prompt, mul, n_prefix)
-            example_features += [[sent1, ge] for ge in gen_examples]
+            example_features += [[text1, postprocess(ge)] for ge in gen_examples]
             labels += [1-int(example[label_keyword])]*len(gen_examples)
 
 
@@ -137,8 +141,8 @@ def augment_data(task, features, dataset, mul, aug_type, dataset_file, prompt_fi
     labels = np.expand_dims(np.array(labels), 1)
     example_features = np.array([*example_features])
     new_df = pd.DataFrame(data = np.hstack([example_features, labels]) , columns = features + [label_keyword])
-    new_df.to_csv(dataset_file)
+    new_df.to_csv(dataset_file, index=False)
     #TODO: save df without index instead of removing column
-    dataset = load_dataset("csv", data_files=dataset_file)["train"].remove_columns(["Unnamed: 0"])
+    dataset = load_dataset("csv", data_files=dataset_file)["train"]
     return dataset
 
