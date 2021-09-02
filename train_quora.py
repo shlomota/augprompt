@@ -69,7 +69,7 @@ def parse_args():
     #parser.add_argument("--model_file", type=str, help="the path to the file to save the model in")
     #parser.add_argument("--prompt_file", type=str, help="the path to the file prompt file")
     parser.add_argument("-t", "--augment_type", default="b", type=str, help="use negative augmentation (n), positive augmentation (p), or both (b)")
-    parser.add_argument("-m", "--multiplier", default=2, type=int, help="how many times to multiply each training example")
+    parser.add_argument("-m", "--multiplier", default=2, type=float, help="how many times to multiply each training example")
     parser.add_argument("-e", "--epochs",default=10, type=int, help="number of training epochs")
     parser.add_argument("-n", default=100, type=int, help="number of training examples")
     parser.add_argument("-s", default=False, type=bool, help="do filter score")
