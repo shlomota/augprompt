@@ -57,7 +57,6 @@ def compute_metrics(eval_pred):
           max_score = result["accuracy"]
     return result
 
-scores = []
 result_filename = "default.txt"
 if len(sys.argv) > 0:
     result_filename = "_".join(sys.argv[1:]).replace("-", "")
@@ -100,6 +99,8 @@ def main(args):
     orig_datasets["train"] = orig_datasets["train"].remove_columns(["questions.id", "questions.text", "is_duplicate"])
     orig_datasets = orig_datasets["train"].train_test_split(test_size=0.2)
     print("finished load", flush=True)
+    scores = []
+
 
     for iter in range(args.i):
         max_score = 0
