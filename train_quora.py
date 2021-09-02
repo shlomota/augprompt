@@ -38,33 +38,10 @@ OUTPUT_PATH = "/content/drive/My Drive/aug/"
 if is_university():
     OUTPUT_PATH = "/home/yandex/AMNLP2021/shlomotannor/amnlp/outputs/"
 
-
-
-# def tokenize_function(examples, tokenizer):
-#     dic = tokenizer(examples["text1"], padding="max_length", truncation=True)
-#     for k in dic.keys():
-#         dic[k + "1"] = dic.pop(k)
-#
-#     dic2 = tokenizer(examples["text2"], padding="max_length", truncation=True)
-#     for k in dic2.keys():
-#         dic2[k + "2"] = dic2.pop(k)
-#     dic.update(dic2)
-#     return dic
+metric = load_metric("accuracy")
 
 def tokenize_function(examples, tokenizer):
     return tokenizer.encode(examples["text1"], examples["text2"], padding="max_length", truncation=True)
-
-
-# def tokenize_function4(examples, tokenizer):
-#     return tokenizer(examples["text1"], padding="max_length", truncation=True)
-#
-# def tokenize_function2(examples, tokenizer):
-#     examples["text1"] = tokenizer(examples["text1"], padding="max_length", truncation=True)
-#     examples["text2"] = tokenizer(examples["text2"], padding="max_length", truncation=True)
-#
-# def tokenize_function3(examples, tokenizer):
-#     return {"text1": tokenizer(examples["text1"], padding="max_length", truncation=True),
-#             "text2": tokenizer(examples["text2"], padding="max_length", truncation=True)}
 
 def binarize_label(examples):
     # can reuse label if using remove_columns in map
@@ -146,7 +123,6 @@ def main(args):
         small_train_dataset = tokenized_datasets["train"]
         small_eval_dataset = tokenized_datasets["test"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(100))
         training_args = TrainingArguments("prompts_model", evaluation_strategy="epoch", save_strategy="epoch", num_train_epochs=args.epochs, save_total_limit=2, load_best_model_at_end=True, metric_for_best_model="eval_accuracy")
-        metric = load_metric("accuracy")
         model = AutoModelForNextSentencePrediction.from_pretrained("bert-base-uncased")
 
         trainer = Trainer(
