@@ -48,7 +48,7 @@ def binarize_label(examples):
     return {"label": [int(label > 0.5) for label in examples["label"]] }
 
 def compute_metrics(eval_pred):
-    global max_score
+    global max_score, metric
     logits, labels = eval_pred
     predictions = np.argmax(logits, axis=-1)
     result = metric.compute(predictions=predictions, references=labels)
