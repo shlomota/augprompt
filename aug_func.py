@@ -2,6 +2,7 @@ import numpy as np
 from datasets import load_dataset
 from transformers import pipeline, set_seed
 import pandas as pd
+import random
 
 MAX_GEN_LEN = 100
 LEN_THRESH = 10
@@ -84,17 +85,19 @@ def augment_data(task, features, dataset, mul, aug_type, dataset_file, prompt_fi
         if task == 'sst':
           # positive
           if aug_type == 'p' or aug_type == 'b':
-              prompt = example["sentence"] + " " + p_prompt
-              gen_examples = gen_from_prompt(prompt, mul, p_prefix)
-              example_features += [[ge] for ge in gen_examples]
-              labels += [example[label_keyword]]*len(gen_examples)
+              if mul >= 1 or random.random() < mul:
+                  prompt = example["sentence"] + " " + p_prompt
+                  gen_examples = gen_from_prompt(prompt, mul, p_prefix)
+                  example_features += [[ge] for ge in gen_examples]
+                  labels += [example[label_keyword]]*len(gen_examples)
 
           # negative
           if aug_type == 'n' or aug_type == 'b':
-              prompt = example["sentence"] + " " + n_prompt
-              gen_examples = gen_from_prompt(prompt, mul, n_prefix)
-              example_features += [[ge] for ge in gen_examples]
-              labels += [1-example[label_keyword]]*len(gen_examples)
+              if mul >= 1 or random.random() < mul:
+                  prompt = example["sentence"] + " " + n_prompt
+                  gen_examples = gen_from_prompt(prompt, mul, n_prefix)
+                  example_features += [[ge] for ge in gen_examples]
+                  labels += [1-example[label_keyword]]*len(gen_examples)
 
         elif task == 'mnli':
             premise = example["premise"]
@@ -118,18 +121,21 @@ def augment_data(task, features, dataset, mul, aug_type, dataset_file, prompt_fi
 
         elif task == "quora":
             text1 = example["text1"]
-            #positive
-            prompt = text1 + " " + p_prompt
-            gen_examples = gen_from_prompt(prompt, mul, p_prefix)
-            example_features += [[text1, postprocess(ge)] for ge in gen_examples]
-            labels += [int(example[label_keyword])]*len(gen_examples)
 
-            # negative
-            text1 = example["text2"] # for the sake of variety
-            prompt = text1 + " " + n_prompt
-            gen_examples = gen_from_prompt(prompt, mul, n_prefix)
-            example_features += [[text1, postprocess(ge)] for ge in gen_examples]
-            labels += [1-int(example[label_keyword])]*len(gen_examples)
+            if mul >= 1 or random.random() < mul:
+                #positive
+                prompt = text1 + " " + p_prompt
+                gen_examples = gen_from_prompt(prompt, mul, p_prefix)
+                example_features += [[text1, postprocess(ge)] for ge in gen_examples]
+                labels += [int(example[label_keyword])]*len(gen_examples)
+
+            if mul >= 1 or random.random() < mul:
+                # negative
+                text1 = example["text2"] # for the sake of variety
+                prompt = text1 + " " + n_prompt
+                gen_examples = gen_from_prompt(prompt, mul, n_prefix)
+                example_features += [[text1, postprocess(ge)] for ge in gen_examples]
+                labels += [1-int(example[label_keyword])]*len(gen_examples)
 
 
 
