@@ -134,6 +134,7 @@ def main(args):
         scores += [max_score]
 
 
+    print(sum(scores), len(scores))
     final_score = sum(scores) / len(scores)
     with open(os.path.join(OUTPUT_PATH, result_filename + ".txt"), "w") as f:
         f.write(str(final_score))
