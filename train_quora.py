@@ -41,7 +41,7 @@ if is_university():
 metric = load_metric("accuracy")
 
 def tokenize_function(examples, tokenizer):
-    return tokenizer.encode(examples["text1"], examples["text2"], padding="max_length", truncation=True)
+    return tokenizer.encode_plus(examples["text1"], examples["text2"], padding="max_length", truncation=True)
 
 def binarize_label(examples):
     # can reuse label if using remove_columns in map
