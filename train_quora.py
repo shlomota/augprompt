@@ -53,11 +53,8 @@ def compute_metrics(eval_pred):
     logits, labels = eval_pred
     predictions = np.argmax(logits, axis=-1)
     result = metric.compute(predictions=predictions, references=labels)
-    print(result)
-    print(max_score)
     if result["accuracy"] > max_score:
         max_score = result["accuracy"]
-        print(max_score)
     return result
 
 result_filename = "default.txt"
@@ -91,6 +88,7 @@ def func(example):
     return {"text1": example["questions.text"][0], "text2": example["questions.text"][1], "label": int(example["is_duplicate"])}
 
 def main(args):
+    global max_score
     random.seed(42)
     print("starting load", flush=True)
     orig_datasets = load_dataset("quora", data_dir=Path(DATA_FILE), cache_dir=Path(DATA_FILE))
@@ -131,9 +129,11 @@ def main(args):
         training_args = TrainingArguments("prompts_model", logging_strategy="epoch", evaluation_strategy="epoch", save_strategy="epoch", num_train_epochs=args.epochs, save_total_limit=2, load_best_model_at_end=True, metric_for_best_model="eval_accuracy")
         model = AutoModelForNextSentencePrediction.from_pretrained("bert-base-uncased")
 
+        #evaluate before train
         trainer = Trainer(
             model=model, args=training_args, train_dataset=small_train_dataset, eval_dataset=small_eval_dataset, compute_metrics=compute_metrics
         )
+        print("Initial results: ", trainer.evaluate(eval_dataset=small_eval_dataset))
         trainer.train()
         scores += [max_score]
 
