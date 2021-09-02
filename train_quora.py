@@ -88,6 +88,7 @@ def func(example):
     return {"text1": example["questions.text"][0], "text2": example["questions.text"][1], "label": int(example["is_duplicate"])}
 
 def main(args):
+    random.seed(42)
     print("starting load", flush=True)
     orig_datasets = load_dataset("quora", data_dir=Path(DATA_FILE), cache_dir=Path(DATA_FILE))
     orig_datasets['train'] = orig_datasets["train"].shuffle(seed=42, load_from_cache_file=False).select(range(10000))
@@ -124,7 +125,7 @@ def main(args):
 
         small_train_dataset = tokenized_datasets["train"]
         small_eval_dataset = tokenized_datasets["test"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(100))
-        training_args = TrainingArguments("prompts_model", logging_strategy="steps", evaluation_strategy="epoch", save_strategy="epoch", num_train_epochs=args.epochs, save_total_limit=2, load_best_model_at_end=True, metric_for_best_model="eval_accuracy")
+        training_args = TrainingArguments("prompts_model", logging_strategy="epoch", evaluation_strategy="epoch", save_strategy="epoch", num_train_epochs=args.epochs, save_total_limit=2, load_best_model_at_end=True, metric_for_best_model="eval_accuracy")
         model = AutoModelForNextSentencePrediction.from_pretrained("bert-base-uncased")
 
         trainer = Trainer(
