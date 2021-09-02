@@ -53,8 +53,11 @@ def compute_metrics(eval_pred):
     logits, labels = eval_pred
     predictions = np.argmax(logits, axis=-1)
     result = metric.compute(predictions=predictions, references=labels)
+    print(result)
+    print(max_score)
     if result["accuracy"] > max_score:
-          max_score = result["accuracy"]
+        max_score = result["accuracy"]
+        print(max_score)
     return result
 
 result_filename = "default.txt"
