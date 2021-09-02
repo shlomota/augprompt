@@ -39,6 +39,7 @@ if is_university():
     OUTPUT_PATH = "/home/yandex/AMNLP2021/shlomotannor/amnlp/outputs/"
 
 metric = load_metric("accuracy")
+max_score = 0
 
 def tokenize_function(examples, tokenizer):
     return tokenizer.encode_plus(examples["text1"], examples["text2"], padding="max_length", truncation=True)
