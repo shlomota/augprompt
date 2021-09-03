@@ -75,7 +75,7 @@ def parse_args():
     parser.add_argument("-s", default=False, type=bool, help="do filter score")
     parser.add_argument("-f", default=False, type=bool, help="do filter length")
     parser.add_argument("-i", default=1, type=int, help="iterations to average over")
-    parser.add_argument("--save-model", default=True, type=bool, help="save model to file")
+    parser.add_argument("--save-model", default=False, type=bool, help="save model to file")
     parser.add_argument("--save-dataset", default=True, type=bool, help="save dataset to file")
     #notes:
     #number of testing examples is always 100 now
