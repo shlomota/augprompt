@@ -21,6 +21,10 @@ import random
 import pickle
 from sklearn.model_selection import train_test_split
 
+df = pd.read_csv(r"C:\Users\soki\PycharmProjects\augprompt\data\para-nmt-5m-processed\para-nmt-5m-processed.txt", sep="\t", index_col=False, names=["text1", "text2"])
+a=5
+
+"""
 
 def is_university():
     return len(socket.gethostname()) < 6
@@ -109,7 +113,7 @@ def main(args):
         max_score = 0
         raw_datasets = copy.deepcopy(orig_datasets)
         raw_datasets['train'] = raw_datasets["train"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(args.n))
-        raw_datasets['test'] = raw_datasets["test"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(1000)) #TODO: remove/fix
+        raw_datasets['test'] = raw_datasets["test"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(5)) #TODO: remove/fix
         state = random.getstate()
 
         filter_out_example = lambda example: example['label'] not in [0, 1]
@@ -158,3 +162,4 @@ if __name__ == '__main__':
 # from transformers import TrainingArguments
 #
 # training_args = TrainingArguments("test_trainer", evaluation_strategy="epoch")
+"""
