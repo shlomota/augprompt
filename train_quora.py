@@ -70,7 +70,7 @@ def parse_args():
     #parser.add_argument("--prompt_file", type=str, help="the path to the file prompt file")
     parser.add_argument("-t", "--augment_type", default="b", type=str, help="use negative augmentation (n), positive augmentation (p), or both (b)")
     parser.add_argument("-m", "--multiplier", default=2, type=float, help="how many times to multiply each training example")
-    parser.add_argument("-e", "--epochs",default=10, type=int, help="number of training epochs")
+    parser.add_argument("-e", "--epochs",default=5, type=int, help="number of training epochs")
     parser.add_argument("-n", default=100, type=int, help="number of training examples")
     parser.add_argument("-s", default=False, type=bool, help="do filter score")
     parser.add_argument("-f", default=False, type=bool, help="do filter length")
@@ -105,10 +105,12 @@ def main(args):
 
 
     for iter in range(args.i):
+
         max_score = 0
         raw_datasets = copy.deepcopy(orig_datasets)
         raw_datasets['train'] = raw_datasets["train"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(args.n))
-        raw_datasets['test'] = raw_datasets["test"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(100)) #TODO: remove/fix
+        raw_datasets['test'] = raw_datasets["test"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(5)) #TODO: remove/fix
+        state = random.getstate()
 
         filter_out_example = lambda example: example['label'] not in [0, 1]
 
@@ -119,13 +121,14 @@ def main(args):
 
         tokenized_datasets = raw_datasets.map(tokenize_function, batched=False, fn_kwargs={'tokenizer':tokenizer})
 
-        new_features = tokenized_datasets["train"].features.copy()
-        new_features["label"] = Value('int32')
-        tokenized_datasets = tokenized_datasets.cast(new_features)
+        # new_features = tokenized_datasets["train"].features.copy()
+        # new_features["label"] = Value('int32')
+        # tokenized_datasets = tokenized_datasets.cast(new_features)
 
 
         small_train_dataset = tokenized_datasets["train"]
-        small_eval_dataset = tokenized_datasets["test"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(100))
+        small_eval_dataset = tokenized_datasets["test"]
+        # small_eval_dataset = tokenized_datasets["test"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(5))
         training_args = TrainingArguments("prompts_model", logging_strategy="epoch", evaluation_strategy="epoch", save_strategy="epoch", num_train_epochs=args.epochs, save_total_limit=2, load_best_model_at_end=True, metric_for_best_model="eval_accuracy")
         model = AutoModelForNextSentencePrediction.from_pretrained("bert-base-uncased")
 
@@ -137,9 +140,12 @@ def main(args):
         trainer.train()
         scores += [max_score]
 
+        random.setstate(state)
 
-    print(sum(scores), len(scores))
+
+    print(scores)
     final_score = sum(scores) / len(scores)
+
     with open(os.path.join(OUTPUT_PATH, result_filename + ".txt"), "w") as f:
         f.write(str(final_score))
     if args.save_model:
