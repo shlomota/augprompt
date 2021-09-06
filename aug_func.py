@@ -1,6 +1,5 @@
 import numpy as np
 from datasets import load_dataset
-from transformers import pipeline, set_seed
 import pandas as pd
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 import sys
@@ -173,31 +172,31 @@ def augment_data(task, features, dataset, mul, aug_type, orig_file, aug_file, pr
                 skipped += skipped_gen
 
         elif task == 'mnli':
-          premise = example["premise"]
-          
-          #positive
-          p_prompt = random.choice(p_prompt_choices)
-          prompt = premise + " " + p_prompt
-          gen_examples, skipped_gen = gen_from_prompt(prompt, rmul, p_prefix)
-          skipped += skipped_gen
-          example_features += [[premise, ge] for ge in gen_examples]
-          labels += [0]*len(gen_examples)
+            premise = example["premise"]
 
-          # negative
-          n_prompt = random.choice(n_prompt_choices)
-          prompt = premise + " " + n_prompt
-          gen_examples, skipped_gen = gen_from_prompt(prompt, rmul, n_prefix)
-          skipped += skipped_gen
-          example_features += [[premise, ge] for ge in gen_examples]
-          labels += [2]*len(gen_examples)
+            #positive
+            p_prompt = random.choice(p_prompt_choices)
+            prompt = premise + " " + p_prompt
+            gen_examples, skipped_gen = gen_from_prompt(prompt, rmul, p_prefix)
+            skipped += skipped_gen
+            example_features += [[premise, ge] for ge in gen_examples]
+            labels += [0]*len(gen_examples)
 
-          #neutral - generate random sentence :D
-          prompt = ""
-          prompt = random.choice(["A", "The", "An", "In", "To", "At"])
-          gen_examples, skipped_gen = gen_from_prompt(prompt, rmul, "")
-          skipped += skipped_gen
-          example_features += [[premise, ge] for ge in gen_examples]
-          labels += [1]*len(gen_examples)
+            # negative
+            n_prompt = random.choice(n_prompt_choices)
+            prompt = premise + " " + n_prompt
+            gen_examples, skipped_gen = gen_from_prompt(prompt, rmul, n_prefix)
+            skipped += skipped_gen
+            example_features += [[premise, ge] for ge in gen_examples]
+            labels += [2]*len(gen_examples)
+
+            #neutral - generate random sentence :D
+            prompt = ""
+            prompt = random.choice(["A", "The", "An", "In", "To", "At"])
+            gen_examples, skipped_gen = gen_from_prompt(prompt, rmul, "")
+            skipped += skipped_gen
+            example_features += [[premise, ge] for ge in gen_examples]
+            labels += [1]*len(gen_examples)
 
         elif task == "quora":
             text1 = example["text1"]
@@ -216,17 +215,16 @@ def augment_data(task, features, dataset, mul, aug_type, orig_file, aug_file, pr
                 gen_examples = gen_from_prompt(prompt, int(np.ceil(mul)), n_prefix)
                 example_features += [[text1, postprocess(ge)] for ge in gen_examples]
                 labels += [1-int(example[label_keyword])]*len(gen_examples)
-        
+
+
         print("example num " + str(i), flush=True)
         #if False and i%5 == 0:
         #  new_df = pd.DataFrame(data=np.array([example_features, labels]).T, columns = features+[label_keyword)
         #  new_df.to_csv(dataset_file)
-
-    labels = np.expand_dims(np.array(labels), 1)
-    example_features = np.array([*example_features])
-    new_df = pd.DataFrame(data = np.hstack([example_features, labels]) , columns = features + [label_keyword])
-    new_df.to_csv(dataset_file, index=False)
-    #TODO: save df without index instead of removing column
-    dataset = load_dataset("csv", data_files=dataset_file)["train"]
-    return dataset
-
+    
+    print("skipped", skipped)
+    
+    create_csv(orig_features, orig_labels, features, label_keyword, orig_file)
+    create_csv(example_features, labels, features, label_keyword, aug_file)
+    
+    print(f"created orig {orig_file} and aug {aug_file}")
