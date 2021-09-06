@@ -21,14 +21,15 @@ template = """#! /bin/sh
 
 if not full_path:
     template = """#! /bin/sh
-#SBATCH --output=%s.out
-#SBATCH --error=%s.err
+#SBATCH --output=../quora_out/%s.out
+#SBATCH --error=../quora_out/%s.err
 #SBATCH --partition=studentkillable
 #SBATCH --job-name=%s
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --gpus=1
-/home/yandex/AMNLP2021/shlomotannor/anaconda3/envs/nli/bin/python /home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/augprompt/train_quora.py -i 5 -n %d -m %.1f"""
+/home/yandex/AMNLP2021/shlomotannor/anaconda3/envs/nli/bin/python /home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/augprompt/train_quora.py -i 5 -n %d -m %.1f
+"""
 
 
 for n in ns:
@@ -36,9 +37,9 @@ for n in ns:
         print(a % (m, n))
         s = "%d_%.1f" % (n,m)
         slurm_content = template % (s, s, s, n, m)
-        with open("/home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/quora_%s.slurm" % (s), "w") as f:
+        with open("/home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/augprompt/quora_%s.slurm" % (s), "w") as f:
             f.write(slurm_content)
-        os.system("sbatch /home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/quora_%s.slurm" % (s))
+        os.system("sbatch /home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/augprompt/quora_%s.slurm" % (s))
 
 
 
