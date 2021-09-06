@@ -5,8 +5,7 @@ a = "python train_quora.py -m %.1f -n %d -i 5"
 ns = [10, 25, 50, 100]
 ms = [0, 0.25, 0.5, 1, 2]
 
-template = """
-#! /bin/sh
+template = """#! /bin/sh
 #SBATCH --output=/home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/quora_out/%s/out.out
 #SBATCH --error=/home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/quora_out/%s/err.err
 #SBATCH --partition=studentkillable
