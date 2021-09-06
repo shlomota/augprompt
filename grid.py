@@ -7,8 +7,8 @@ ms = [0, 0.25, 0.5, 1, 2]
 
 template = """
 #! /bin/sh
-#SBATCH --output=quora_out/%s/out.out
-#SBATCH --error=quora_out/%s/err.err
+#SBATCH --output=/home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/quora_out/%s/out.out
+#SBATCH --error=/home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/quora_out/%s/err.err
 #SBATCH --partition=studentkillable
 #SBATCH --job-name
 #SBATCH --nodes=1
@@ -22,9 +22,9 @@ for n in ns:
         print(a % (m, n))
         s = "%d_%.1f" % (n,m)
         slurm_content = template % (s, s, n, m)
-        with open("quora_%s.slurm" % (s), "w") as f:
+        with open("/home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/quora_%s.slurm" % (s), "w") as f:
             f.write(slurm_content)
-        os.system("quora_%s.slurm" % (s))
+        os.system("/home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/quora_%s.slurm" % (s))
 
 
 
