@@ -164,7 +164,7 @@ def augment_data(task, features, dataset, mul, aug_type, orig_file, aug_file, pr
                 prompt = example["sentence"] + " " + p_prompt
                 gen_examples, skipped_gen = gen_from_prompt(prompt, rmul, p_prefix)
                 example_features += [[ge] for ge in gen_examples]
-                labels += [example[label_eyword]]*len(gen_examples)
+                labels += [example[label_keyword]]*len(gen_examples)
                 skipped += skipped_gen
 
             # negative
