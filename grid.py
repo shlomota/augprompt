@@ -24,7 +24,7 @@ for n in ns:
         slurm_content = template % (s, s, n, m)
         with open("/home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/quora_%s.slurm" % (s), "w") as f:
             f.write(slurm_content)
-        os.system("/home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/quora_%s.slurm" % (s))
+        os.system("sbatch /home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/quora_%s.slurm" % (s))
 
 
 
