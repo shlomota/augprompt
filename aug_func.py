@@ -122,9 +122,14 @@ def augment_data(task, features, dataset, mul, aug_type, orig_file, aug_file, pr
     with open(prompt_file) as f:
         prompt_lines = f.readlines()
 
-    p_prompt_choices = prompt_lines[0].split("|")
+    # p_prompt_choices = prompt_lines[0].split("|")
+    # p_prefix = prompt_lines[1]
+    # n_prompt_choices = prompt_lines[2].split("|")
+    # n_prefix = prompt_lines[3]
+
+    p_prompt = prompt_lines[0]
     p_prefix = prompt_lines[1]
-    n_prompt_choices = prompt_lines[2].split("|")
+    n_prompt = prompt_lines[2]
     n_prefix = prompt_lines[3]
     
     example_features = []
