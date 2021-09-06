@@ -21,10 +21,7 @@ import random
 import pickle
 from sklearn.model_selection import train_test_split
 
-df = pd.read_csv(r"C:\Users\soki\PycharmProjects\augprompt\data\para-nmt-5m-processed\para-nmt-5m-processed.txt", sep="\t", index_col=False, names=["text1", "text2"])
-a=5
 
-"""
 
 def is_university():
     return len(socket.gethostname()) < 6
@@ -162,4 +159,3 @@ if __name__ == '__main__':
 # from transformers import TrainingArguments
 #
 # training_args = TrainingArguments("test_trainer", evaluation_strategy="epoch")
-"""
