@@ -80,13 +80,13 @@ def gen_from_prompt(prompt, mul, prefix):
     skipped = 0
     for sample_output in sample_outputs:
         sample_output = tokenizer.decode(sample_output, skip_special_tokens=True)
-        print("sample_output_before", sample_output)
+        # print("sample_output_before", sample_output)
         sample_output = sample_output[len(prompt):].strip().replace('\n\n\n', ' ').replace('\n\n', ' ').replace('\n',' ')
         if not sample_output:
             skipped += 1
             continue
-        print("prompt",prompt)
-        print("sample_output", sample_output)
+        # print("prompt",prompt)
+        # print("sample_output", sample_output)
         end_idx = -1 #find_end_of_sentence(sample_output)
         if end_idx == -1:
             generated_until_eos = sample_output
@@ -95,7 +95,7 @@ def gen_from_prompt(prompt, mul, prefix):
         generated_until_eos = capitalize_sentence(generated_until_eos)
         generated_until_eos = generated_until_eos.strip()
         res += [generated_until_eos]
-        print("generated_until_eos", generated_until_eos)
+        # print("generated_until_eos", generated_until_eos)
 
     return res
     
