@@ -96,6 +96,8 @@ def gen_from_prompt(prompt, mul, prefix):
         generated_until_eos = generated_until_eos.strip()
         res += [generated_until_eos]
         print("generated_until_eos", generated_until_eos)
+
+    return res
     
     
 
