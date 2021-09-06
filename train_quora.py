@@ -33,14 +33,14 @@ DATASET_FILE = "dataset_quora_%d.csv"
 AUG_DATASET_FILE = "aug_dataset_quora_%d.csv"
 MERGED_DATASET_FILE = "merged_dataset_quora_%d.csv"
 MODEL_FILE = "quora_model_100"
-PROMPT_FILE = "prompts.txt"
 PROMPT_FILE = "prompts_quora.txt"
 
 MAX_M = 2
+MAX_N = 100
 
 OUTPUT_PATH = "/content/drive/My Drive/aug/"
 if is_university():
-    OUTPUT_PATH = "/home/yandex/AMNLP2021/shlomotannor/amnlp/outputs/"
+    OUTPUT_PATH = "/home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/outputs/"
 
 metric = load_metric("accuracy")
 max_score = 0
@@ -112,7 +112,7 @@ def main(args):
 
         max_score = 0
         raw_datasets = copy.deepcopy(orig_datasets)
-        raw_datasets['train'] = raw_datasets["train"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(args.n))
+        raw_datasets['train'] = raw_datasets["train"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(MAX_N))
         raw_datasets['test'] = raw_datasets["test"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(1000)) #TODO: remove/fix
         state = random.getstate()
 
@@ -131,6 +131,7 @@ def main(args):
         df_aug = pd.read_csv(aug_dataset_file)
 
         num_samples = int(len(df_orig) * args.multiplier)
+        df_orig = df_orig.sample(n=args.n)
         df_aug = df_aug.sample(n=num_samples)
         df_combined = df_orig.append(df_aug, ignore_index=True)
         merged_dataset_file = MERGED_DATASET_FILE % (iter)
