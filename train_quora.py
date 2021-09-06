@@ -29,10 +29,14 @@ DATA_FILE = "../"
 if is_university():
     DATA_FILE = "/home/yandex/AMNLP2021/shlomotannor/data"
 
-DATASET_FILE = "temp_dataset_quora.csv"
+DATASET_FILE = "dataset_quora_%d.csv"
+AUG_DATASET_FILE = "aug_dataset_quora_%d.csv"
+MERGED_DATASET_FILE = "merged_dataset_quora_%d.csv"
 MODEL_FILE = "quora_model_100"
 PROMPT_FILE = "prompts.txt"
 PROMPT_FILE = "prompts_quora.txt"
+
+MAX_M = 2
 
 OUTPUT_PATH = "/content/drive/My Drive/aug/"
 if is_university():
@@ -114,8 +118,26 @@ def main(args):
 
         filter_out_example = lambda example: example['label'] not in [0, 1]
 
-        raw_datasets['train'] = augment_data('quora', ['text1', 'text2'], raw_datasets['train'], args.multiplier, args.augment_type, DATASET_FILE, PROMPT_FILE, do_filter_score=args.s, do_filter_length=False, filter_out_example = filter_out_example)
-        print("finished augment", flush=True)
+        orig_dataset_file = DATASET_FILE % (iter)
+        aug_dataset_file = AUG_DATASET_FILE % (iter)
+
+        if not os.path.exists(orig_dataset_file) or not os.path.exists(aug_dataset_file):
+            print("started augment", flush=True)
+            augment_data('quora', ['text1', 'text2'], raw_datasets['train'], MAX_M, args.augment_type, orig_dataset_file, aug_dataset_file, PROMPT_FILE, do_filter_score=args.s, do_filter_length=False, filter_out_example = filter_out_example)
+            print("finished augment", flush=True)
+
+        # merge aug and orig based on multiplier
+        df_orig = pd.read_csv(orig_dataset_file)
+        df_aug = pd.read_csv(aug_dataset_file)
+
+        num_samples = int(len(df_orig) * args.multiplier)
+        df_aug = df_aug.sample(n=num_samples)
+        df_combined = df_orig.append(df_aug, ignore_index=True)
+        merged_dataset_file = MERGED_DATASET_FILE % (iter)
+        df_combined.to_csv(merged_dataset_file)
+
+        raw_datasets['train'] = load_dataset("csv", data_files=merged_dataset_file)["train"]
+
 
         tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
 
