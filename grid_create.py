@@ -20,15 +20,15 @@ template = """#! /bin/sh
 
 if not full_path:
     template = """#! /bin/sh
-    #SBATCH --output=%s.out
-    #SBATCH --error=%s.err
-    #SBATCH --partition=studentkillable
-    #SBATCH --job-name=%s
-    #SBATCH --nodes=1
-    #SBATCH --ntasks=1
-    #SBATCH --gpus=1
-    /home/yandex/AMNLP2021/shlomotannor/anaconda3/envs/nli/bin/python /home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/augprompt/train_quora.py -i 5 -n %d -m %.1f
-    """
+#SBATCH --output=%s.out
+#SBATCH --error=%s.err
+#SBATCH --partition=studentkillable
+#SBATCH --job-name=%s
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --gpus=1
+/home/yandex/AMNLP2021/shlomotannor/anaconda3/envs/nli/bin/python /home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/augprompt/train_quora.py -i 5 -n %d -m %.1f
+"""
 
 for n in ns:
     for m in ms:
