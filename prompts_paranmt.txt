@@ -1,0 +1,9 @@
+in other words:
+
+on the other hand:
+
+#order is
+#positive prompt
+#positive prefix
+#negative prompt
+#negative prefix
