@@ -90,10 +90,6 @@ def parse_args():
 
     return parser.parse_args()
 
-# lambda example: {"text1": example["questions.text"][0], "text2": example["questions.text"][1], "label": int(example["is_duplicate"])}
-def func(example):
-    return {"text1": example["questions.text"][0], "text2": example["questions.text"][1], "label": int(example["is_duplicate"])}
-
 def main(args):
     global max_score
     random.seed(42)
@@ -101,7 +97,7 @@ def main(args):
     orig_datasets = load_dataset("csv", data_files="data/para-nmt-balanced-20000.txt", delimiter="\t")
     orig_datasets['train'] = orig_datasets["train"].shuffle(seed=42, load_from_cache_file=False).select(range(10000))
     orig_datasets = orig_datasets.flatten()
-    orig_datasets["train"] = orig_datasets["train"].map(func, batched=False)
+    # orig_datasets["train"] = orig_datasets["train"].map(func, batched=False)
     # orig_datasets["train"] = orig_datasets["train"].add_column("text1", [a[0] for a in orig_datasets["train"]["questions.text"]])
     # orig_datasets["train"] = orig_datasets["train"].add_column("text2", [a[1] for a in orig_datasets["train"]["questions.text"]])
     # orig_datasets["train"] = orig_datasets["train"].add_column("label", [int(a) for a in orig_datasets["train"]["is_duplicate"]])
