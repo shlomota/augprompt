@@ -97,11 +97,6 @@ def main(args):
     orig_datasets = load_dataset("csv", data_files="data/para-nmt-balanced-20000.txt", delimiter="\t")
     orig_datasets['train'] = orig_datasets["train"].shuffle(seed=42, load_from_cache_file=False).select(range(10000))
     orig_datasets = orig_datasets.flatten()
-    # orig_datasets["train"] = orig_datasets["train"].map(func, batched=False)
-    # orig_datasets["train"] = orig_datasets["train"].add_column("text1", [a[0] for a in orig_datasets["train"]["questions.text"]])
-    # orig_datasets["train"] = orig_datasets["train"].add_column("text2", [a[1] for a in orig_datasets["train"]["questions.text"]])
-    # orig_datasets["train"] = orig_datasets["train"].add_column("label", [int(a) for a in orig_datasets["train"]["is_duplicate"]])
-    orig_datasets["train"] = orig_datasets["train"].remove_columns(["questions.id", "questions.text", "is_duplicate"])
     orig_datasets = orig_datasets["train"].train_test_split(test_size=0.2)
     print("finished load", flush=True)
     scores = []
