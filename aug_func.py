@@ -205,7 +205,7 @@ def augment_data(task, features, dataset, mul, aug_type, orig_file, aug_file, pr
             example_features += [[premise, ge] for ge in gen_examples]
             labels += [1]*len(gen_examples)
 
-        elif task == "quora":
+        elif task == "quora" or task == "paranmt":
             text1 = example["text1"]
 
             if mul >= 1 or random.random() < mul:

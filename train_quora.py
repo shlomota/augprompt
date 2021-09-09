@@ -139,7 +139,7 @@ def main(args):
         merged_dataset_file = MERGED_DATASET_FILE % (args.n, iter)
         df_combined.to_csv(merged_dataset_file, sep="\t")
 
-        raw_datasets['train'] = load_dataset("csv", data_files=merged_dataset_file)["train"]
+        raw_datasets['train'] = load_dataset("csv", data_files=merged_dataset_file, delimiter="\t")["train"]
 
 
         tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")

@@ -30,10 +30,15 @@ DATA_FILE = "../"
 if is_university():
     DATA_FILE = "/home/yandex/AMNLP2021/shlomotannor/data"
 
-DATASET_FILE = "temp_dataset_quora.csv"
-MODEL_FILE = "quora_model_100"
+DATASET_FILE = "dataset_paranmt_%d_%d.csv"
+AUG_DATASET_FILE = "aug_dataset_paranmt_%d_%d.csv"
+MERGED_DATASET_FILE = "merged_dataset_paranmt_%d_%d.csv"
+MODEL_FILE = "paranmt_model_100"
 PROMPT_FILE = "prompts.txt"
-PROMPT_FILE = "prompts_quora.txt"
+PROMPT_FILE = "prompts_paranmt.txt"
+
+MAX_M = 2
+MAX_N = 100
 
 OUTPUT_PATH = "/content/drive/My Drive/aug/"
 if is_university():
@@ -76,7 +81,8 @@ def parse_args():
     parser.add_argument("-s", default=False, type=bool, help="do filter score")
     parser.add_argument("-f", default=False, type=bool, help="do filter length")
     parser.add_argument("-i", default=1, type=int, help="iterations to average over")
-    parser.add_argument("--save-model", default=True, type=bool, help="save model to file")
+    parser.add_argument("--save-model", default=False, type=bool, help="save model to file")
+    parser.add_argument("--aug-only", default=False, type=bool, help="only augment no train eval")
     parser.add_argument("--save-dataset", default=True, type=bool, help="save dataset to file")
     #notes:
     #number of testing examples is always 100 now
@@ -92,7 +98,7 @@ def main(args):
     global max_score
     random.seed(42)
     print("starting load", flush=True)
-    orig_datasets = load_dataset("quora", data_dir=Path(DATA_FILE), cache_dir=Path(DATA_FILE))
+    orig_datasets = load_dataset("csv", data_files="data/para-nmt-balanced-20000.txt", delimiter="\t")
     orig_datasets['train'] = orig_datasets["train"].shuffle(seed=42, load_from_cache_file=False).select(range(10000))
     orig_datasets = orig_datasets.flatten()
     orig_datasets["train"] = orig_datasets["train"].map(func, batched=False)
@@ -110,13 +116,33 @@ def main(args):
         max_score = 0
         raw_datasets = copy.deepcopy(orig_datasets)
         raw_datasets['train'] = raw_datasets["train"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(args.n))
-        raw_datasets['test'] = raw_datasets["test"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(5)) #TODO: remove/fix
+        raw_datasets['test'] = raw_datasets["test"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(1000)) #TODO: remove/fix
         state = random.getstate()
 
         filter_out_example = lambda example: example['label'] not in [0, 1]
 
-        raw_datasets['train'] = augment_data('quora', ['text1', 'text2'], raw_datasets['train'], args.multiplier, args.augment_type, DATASET_FILE, PROMPT_FILE, do_filter_score=args.s, do_filter_length=False, filter_out_example = filter_out_example)
-        print("finished augment", flush=True)
+        orig_dataset_file = DATASET_FILE % (args.n, iter)
+        aug_dataset_file = AUG_DATASET_FILE % (args.n, iter)
+
+        if not os.path.exists(orig_dataset_file) or not os.path.exists(aug_dataset_file):
+            print("started augment", flush=True)
+            augment_data('paranmt', ['text1', 'text2'], raw_datasets['train'], MAX_M, args.augment_type, orig_dataset_file, aug_dataset_file, PROMPT_FILE, do_filter_score=args.s, do_filter_length=False, filter_out_example = filter_out_example)
+            print("finished augment", flush=True)
+
+        if args.aug_only:
+            continue
+        # merge aug and orig based on multiplier
+        df_orig = pd.read_csv(orig_dataset_file, sep="\t")
+        df_aug = pd.read_csv(aug_dataset_file, sep="\t")
+
+        num_samples = int(len(df_orig) * args.multiplier)
+        df_aug = df_aug.sample(n=num_samples)
+        df_combined = df_orig.append(df_aug, ignore_index=True)
+        merged_dataset_file = MERGED_DATASET_FILE % (args.n, iter)
+        df_combined.to_csv(merged_dataset_file, sep="\t")
+
+        raw_datasets['train'] = load_dataset("csv", data_files=merged_dataset_file, delimiter="\t")["train"]
+
 
         tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
 
@@ -130,7 +156,7 @@ def main(args):
         small_train_dataset = tokenized_datasets["train"]
         small_eval_dataset = tokenized_datasets["test"]
         # small_eval_dataset = tokenized_datasets["test"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(5))
-        training_args = TrainingArguments("prompts_model", logging_strategy="epoch", evaluation_strategy="epoch", save_strategy="epoch", num_train_epochs=args.epochs, save_total_limit=2, load_best_model_at_end=True, metric_for_best_model="eval_accuracy")
+        training_args = TrainingArguments("paranmt_model_%s_%s" % (args.n, iter), logging_strategy="epoch", evaluation_strategy="epoch", save_strategy="epoch", num_train_epochs=args.epochs, save_total_limit=2, load_best_model_at_end=True, metric_for_best_model="eval_accuracy")
         model = AutoModelForNextSentencePrediction.from_pretrained("bert-base-uncased")
 
         #evaluate before train
@@ -143,6 +169,9 @@ def main(args):
 
         random.setstate(state)
 
+    if args.aug_only:
+        print("Finishied augmentation, quitting...")
+        exit(0)
 
     print(scores)
     final_score = sum(scores) / len(scores)
@@ -152,7 +181,7 @@ def main(args):
     if args.save_model:
         model.save_pretrained(os.path.join(OUTPUT_PATH, result_filename + ".model"))
     if args.save_dataset:
-        raw_datasets['train'].to_csv(os.path.join(OUTPUT_PATH, result_filename + ".csv"))
+        raw_datasets['train'].to_csv(os.path.join(OUTPUT_PATH, result_filename + ".csv"), sep="\t")
 
 if __name__ == '__main__':
     main(parse_args())  
