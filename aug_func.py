@@ -110,7 +110,7 @@ def create_csv(example_features, labels, features, label_keyword, csv_name):
     example_features = np.array([*example_features])
     ts = np.hstack([example_features, labels])        
     new_df = pd.DataFrame(data = np.hstack([example_features, labels]) , columns = features + [label_keyword])
-    new_df.to_csv(csv_name, index=False)
+    new_df.to_csv(csv_name, index=False, sep="\t")
 
 # mul - how many examples to generate from each example
 # aug_type:
@@ -118,8 +118,8 @@ def create_csv(example_features, labels, features, label_keyword, csv_name):
 #   'p' - only augment positive examples (same label)
 #   'b' - both (mul examples of each)
 def augment_data(task, features, dataset, mul, aug_type, orig_file, aug_file, prompt_file, do_filter_score=True, do_filter_length=False, filter_out_example = lambda x: False, label_keyword='label'):
-    dataset.to_csv(orig_file)
-    df = pd.read_csv(orig_file)
+    dataset.to_csv(orig_file, sep="\t")
+    df = pd.read_csv(orig_file, sep="\t")
 
     with open(prompt_file) as f:
         prompt_lines = f.readlines()

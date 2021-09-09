@@ -130,14 +130,14 @@ def main(args):
         if args.aug_only:
             continue
         # merge aug and orig based on multiplier
-        df_orig = pd.read_csv(orig_dataset_file)
-        df_aug = pd.read_csv(aug_dataset_file)
+        df_orig = pd.read_csv(orig_dataset_file, sep="\t")
+        df_aug = pd.read_csv(aug_dataset_file, sep="\t")
 
         num_samples = int(len(df_orig) * args.multiplier)
         df_aug = df_aug.sample(n=num_samples)
         df_combined = df_orig.append(df_aug, ignore_index=True)
         merged_dataset_file = MERGED_DATASET_FILE % (args.n, iter)
-        df_combined.to_csv(merged_dataset_file)
+        df_combined.to_csv(merged_dataset_file, sep="\t")
 
         raw_datasets['train'] = load_dataset("csv", data_files=merged_dataset_file)["train"]
 
@@ -179,7 +179,7 @@ def main(args):
     if args.save_model:
         model.save_pretrained(os.path.join(OUTPUT_PATH, result_filename + ".model"))
     if args.save_dataset:
-        raw_datasets['train'].to_csv(os.path.join(OUTPUT_PATH, result_filename + ".csv"))
+        raw_datasets['train'].to_csv(os.path.join(OUTPUT_PATH, result_filename + ".csv"), sep="\t")
 
 if __name__ == '__main__':
     main(parse_args())  
