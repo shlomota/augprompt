@@ -80,6 +80,7 @@ def parse_args():
     parser.add_argument("-f", default=False, type=bool, help="do filter length")
     parser.add_argument("-i", default=1, type=int, help="iterations to average over")
     parser.add_argument("--save-model", default=False, type=bool, help="save model to file")
+    parser.add_argument("--aug-only", default=False, type=bool, help="only augment no train eval")
     parser.add_argument("--save-dataset", default=True, type=bool, help="save dataset to file")
     #notes:
     #number of testing examples is always 100 now
@@ -126,6 +127,8 @@ def main(args):
             augment_data('quora', ['text1', 'text2'], raw_datasets['train'], MAX_M, args.augment_type, orig_dataset_file, aug_dataset_file, PROMPT_FILE, do_filter_score=args.s, do_filter_length=False, filter_out_example = filter_out_example)
             print("finished augment", flush=True)
 
+        if args.aug_only:
+            continue
         # merge aug and orig based on multiplier
         df_orig = pd.read_csv(orig_dataset_file)
         df_aug = pd.read_csv(aug_dataset_file)
@@ -164,6 +167,9 @@ def main(args):
 
         random.setstate(state)
 
+    if args.aug_only:
+        print("Finishied augmentation, quitting...")
+        exit(0)
 
     print(scores)
     final_score = sum(scores) / len(scores)

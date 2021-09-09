@@ -36,6 +36,8 @@ for n in ns:
     for m in ms:
         print(a % (m, n))
         s = "%d_%.1f" % (n,m)
+        if m == int(m):
+            s = "%d_%d" % (n,m)
         slurm_content = template % (s, s, s, n, m)
         with open("/home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/augprompt/quora_%s.slurm" % (s), "w") as f:
             f.write(slurm_content)
