@@ -42,7 +42,7 @@ MAX_N = 100
 
 OUTPUT_PATH = "/content/drive/My Drive/aug/"
 if is_university():
-    OUTPUT_PATH = "/home/yandex/AMNLP2021/shlomotannor/amnlp/paranmt_results/"
+    OUTPUT_PATH = "/home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/paranmt_results/"
 
 metric = load_metric("accuracy")
 max_score = 0
