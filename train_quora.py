@@ -31,7 +31,7 @@ if is_university():
 
 DATASET_FILE = "dataset_quora_%d_%d.csv"
 AUG_DATASET_FILE = "aug_dataset_quora_%d_%d.csv"
-MERGED_DATASET_FILE = "merged_dataset_quora_%d_%d.csv"
+MERGED_DATASET_FILE = "merged_dataset_quora_%d_%d_%s.csv"
 MODEL_FILE = "quora_model_100"
 PROMPT_FILE = "prompts_quora.txt"
 
@@ -136,7 +136,7 @@ def main(args):
         num_samples = int(len(df_orig) * args.multiplier)
         df_aug = df_aug.sample(n=num_samples)
         df_combined = df_orig.append(df_aug, ignore_index=True)
-        merged_dataset_file = MERGED_DATASET_FILE % (args.n, iter)
+        merged_dataset_file = MERGED_DATASET_FILE % (args.n, iter, args.multiplier)
         df_combined.to_csv(merged_dataset_file, sep="\t")
 
         raw_datasets['train'] = load_dataset("csv", data_files=merged_dataset_file, delimiter="\t")["train"]
