@@ -147,7 +147,7 @@ def main(args):
         small_train_dataset = tokenized_datasets["train"]
         small_eval_dataset = tokenized_datasets["test"]
         # small_eval_dataset = tokenized_datasets["test"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(5))
-        training_args = TrainingArguments("paranmt_model_%s_%s" % (args.n, iter), logging_strategy="epoch", evaluation_strategy="epoch", save_strategy="epoch", num_train_epochs=args.epochs, save_total_limit=2, load_best_model_at_end=True, metric_for_best_model="eval_accuracy")
+        training_args = TrainingArguments("paranmt_model_%s_%s_%s" % (args.n, args.m, iter), logging_strategy="epoch", evaluation_strategy="epoch", save_strategy="epoch", num_train_epochs=args.epochs, save_total_limit=2, load_best_model_at_end=True, metric_for_best_model="eval_accuracy")
         model = AutoModelForNextSentencePrediction.from_pretrained("bert-base-uncased")
 
         #evaluate before train
