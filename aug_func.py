@@ -12,12 +12,12 @@ LEN_THRESH = 10
 
 cache_dir = '/home/yandex/AMNLP2021/shlomotannor/amnlp/.cache'
 
-# tokenizer = GPT2Tokenizer.from_pretrained("gpt2-xl", cache_dir = cache_dir)
-tokenizer = GPT2Tokenizer.from_pretrained("gpt2-large", cache_dir = cache_dir)
+tokenizer = GPT2Tokenizer.from_pretrained("gpt2-xl", cache_dir = cache_dir)
+# tokenizer = GPT2Tokenizer.from_pretrained("gpt2-large", cache_dir = cache_dir)
 
 # add the EOS token as PAD token to avoid warnings
-# model = GPT2LMHeadModel.from_pretrained("gpt2-xl", pad_token_id=tokenizer.eos_token_id, cache_dir = cache_dir)
-model = GPT2LMHeadModel.from_pretrained("gpt2-large", pad_token_id=tokenizer.eos_token_id, cache_dir = cache_dir)
+model = GPT2LMHeadModel.from_pretrained("gpt2-xl", pad_token_id=tokenizer.eos_token_id, cache_dir = cache_dir)
+# model = GPT2LMHeadModel.from_pretrained("gpt2-large", pad_token_id=tokenizer.eos_token_id, cache_dir = cache_dir)
 
 def find_end_of_sentence(sen):
     for i in range(len(sen)-1, -1, -1):
