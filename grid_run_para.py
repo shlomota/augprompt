@@ -1,11 +1,11 @@
 # !python train_paranmt.py -m 0.5 -n 10 -i 5
 import os
 import time
-# time.sleep(60 * 60 * 3)
+time.sleep(60 * 60 * 3)
 a = "!python train_paranmt.py -m %s -n %d -i 5"
 a = "python train_paranmt.py -m %s -n %d -i 5"
-ns = [10, 25, 50, 100]
-ns = [10, 25, 100]
+ns = [10, 20, 50, 100]
+ns = [10, 20, 100]
 # ns = [10, 100]
 ms = [0, 0.25, 0.5, 1, 2]
 
