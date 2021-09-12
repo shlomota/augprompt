@@ -215,7 +215,7 @@ def augment_data(task, features, dataset, mul, aug_type, orig_file, aug_file, pr
                 prompt = text1 + " " + p_prompt
                 gen_examples = gen_from_prompt(prompt, int(np.ceil(mul)), p_prefix)
                 example_features += [[text1, postprocess(ge)] for ge in gen_examples]
-                labels += [int(example[label_keyword])]*len(gen_examples)
+                labels += [1]*len(gen_examples)
 
             if mul >= 1 or random.random() < mul:
                 # negative
@@ -223,7 +223,7 @@ def augment_data(task, features, dataset, mul, aug_type, orig_file, aug_file, pr
                 prompt = text1 + " " + n_prompt
                 gen_examples = gen_from_prompt(prompt, int(np.ceil(mul)), n_prefix)
                 example_features += [[text1, postprocess(ge)] for ge in gen_examples]
-                labels += [1-int(example[label_keyword])]*len(gen_examples)
+                labels += [0]*len(gen_examples)
 
 
         print("example num " + str(i), flush=True)
