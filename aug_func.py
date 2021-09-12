@@ -21,14 +21,14 @@ model = GPT2LMHeadModel.from_pretrained("gpt2-large", pad_token_id=tokenizer.eos
 
 def find_end_of_sentence(sen):
     for i in range(len(sen)-1, -1, -1):
-        if sen[i] == '?' or sen[i] == '!':
+        if sen[i] == '?' or sen[i] == '!' or sen[i] == '.':
             return i
-        try:    
-            if sen[i] == '.' and (i+2 < len(sen)-1 or (i+2 >= len(sen)-1 and sen[i + 2] != '.')) and (i-2 < 0 or (i-2 >= 0 and sen[i-2] != ' ')):
-                return i
-        except IndexError:
-            print("ie", i)
-            raise IndexError(f"ie: index {i} in sentence of len {len(sen)}: {sen}")
+        # try:
+        #     if sen[i] == '.' and (i+2 < len(sen)-1 or (i+2 >= len(sen)-1 and sen[i + 2] != '.')) and (i-2 < 0 or (i-2 >= 0 and sen[i-2] != ' ')):
+        #         return i
+        # except IndexError:
+        #     print("ie", i)
+        #     raise IndexError(f"ie: index {i} in sentence of len {len(sen)}: {sen}")
             
     return -1
 
