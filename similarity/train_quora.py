@@ -1,48 +1,40 @@
 import sys
 import os
 import socket
-from datasets import load_dataset, utils
+from datasets import load_dataset
 from pathlib import Path
-import pdb
 import numpy as np
 from datasets import load_metric
-from transformers import AutoModelForSequenceClassification, AutoModelForNextSentencePrediction
+from transformers import AutoModelForNextSentencePrediction
 from transformers import Trainer
 from transformers import TrainingArguments
 from transformers import AutoTokenizer
-from transformers import pipeline, set_seed
 import pandas as pd
-from datasets import ClassLabel, Value
 import argparse
-from aug_func import augment_data
+from similarity.aug_func import augment_data
 import copy
 import random
-
-import pickle
-from sklearn.model_selection import train_test_split
-
 
 
 def is_university():
     return len(socket.gethostname()) < 6
 
-DATA_FILE = "../"
+DATA_FILE = "../../"
 if is_university():
     DATA_FILE = "/home/yandex/AMNLP2021/shlomotannor/data"
 
-DATASET_FILE = "dataset_paranmt_%d_%d.csv"
-AUG_DATASET_FILE = "aug_dataset_paranmt_%d_%d.csv"
-MERGED_DATASET_FILE = "merged_dataset_paranmt_%d_%d_%s.csv"
-MODEL_FILE = "paranmt_model_100"
-PROMPT_FILE = "prompts.txt"
-PROMPT_FILE = "prompts_paranmt.txt"
+DATASET_FILE = "dataset_quora_%d_%d.csv"
+AUG_DATASET_FILE = "aug_dataset_quora_%d_%d.csv"
+MERGED_DATASET_FILE = "merged_dataset_quora_%d_%d_%s.csv"
+MODEL_FILE = "quora_model_100"
+PROMPT_FILE = "prompts_quora.txt"
 
 MAX_M = 2
 MAX_N = 100
 
 OUTPUT_PATH = "/content/drive/My Drive/aug/"
 if is_university():
-    OUTPUT_PATH = "/home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/paranmt_results/"
+    OUTPUT_PATH = "/home/yandex/AMNLP2021/shlomotannor/amnlp/shlomo/outputs/"
 
 metric = load_metric("accuracy")
 max_score = 0
@@ -90,13 +82,22 @@ def parse_args():
 
     return parser.parse_args()
 
+# lambda example: {"text1": example["questions.text"][0], "text2": example["questions.text"][1], "label": int(example["is_duplicate"])}
+def func(example):
+    return {"text1": example["questions.text"][0], "text2": example["questions.text"][1], "label": int(example["is_duplicate"])}
+
 def main(args):
     global max_score
     random.seed(42)
     print("starting load", flush=True)
-    orig_datasets = load_dataset("csv", data_files="data/para-nmt-balanced-20000.txt", delimiter="\t")
+    orig_datasets = load_dataset("../quora", data_dir=Path(DATA_FILE), cache_dir=Path(DATA_FILE))
     orig_datasets['train'] = orig_datasets["train"].shuffle(seed=42, load_from_cache_file=False).select(range(10000))
     orig_datasets = orig_datasets.flatten()
+    orig_datasets["train"] = orig_datasets["train"].map(func, batched=False)
+    # orig_datasets["train"] = orig_datasets["train"].add_column("text1", [a[0] for a in orig_datasets["train"]["questions.text"]])
+    # orig_datasets["train"] = orig_datasets["train"].add_column("text2", [a[1] for a in orig_datasets["train"]["questions.text"]])
+    # orig_datasets["train"] = orig_datasets["train"].add_column("label", [int(a) for a in orig_datasets["train"]["is_duplicate"]])
+    orig_datasets["train"] = orig_datasets["train"].remove_columns(["questions.id", "questions.text", "is_duplicate"])
     orig_datasets = orig_datasets["train"].train_test_split(test_size=0.2)
     print("finished load", flush=True)
     scores = []
@@ -117,7 +118,7 @@ def main(args):
 
         if not os.path.exists(orig_dataset_file) or not os.path.exists(aug_dataset_file):
             print("started augment", flush=True)
-            augment_data('paranmt', ['text1', 'text2'], raw_datasets['train'], MAX_M, args.augment_type, orig_dataset_file, aug_dataset_file, PROMPT_FILE, do_filter_score=args.s, do_filter_length=False, filter_out_example = filter_out_example)
+            augment_data('quora', ['text1', 'text2'], raw_datasets['train'], MAX_M, args.augment_type, orig_dataset_file, aug_dataset_file, PROMPT_FILE, do_filter_score=args.s, do_filter_length=False, filter_out_example = filter_out_example)
             print("finished augment", flush=True)
 
         if args.aug_only:
@@ -147,7 +148,7 @@ def main(args):
         small_train_dataset = tokenized_datasets["train"]
         small_eval_dataset = tokenized_datasets["test"]
         # small_eval_dataset = tokenized_datasets["test"].shuffle(seed=random.randint(0, 1024), load_from_cache_file=False).select(range(5))
-        training_args = TrainingArguments("paranmt_model_%s_%s_%s" % (args.n, args.multiplier, iter), logging_strategy="epoch", evaluation_strategy="epoch", save_strategy="epoch", num_train_epochs=args.epochs, save_total_limit=2, load_best_model_at_end=True, metric_for_best_model="eval_accuracy")
+        training_args = TrainingArguments("quora_model_%s_%s_%s" % (args.n, args.multiplier, iter), logging_strategy="epoch", evaluation_strategy="epoch", save_strategy="epoch", num_train_epochs=args.epochs, save_total_limit=2, load_best_model_at_end=True, metric_for_best_model="eval_accuracy")
         model = AutoModelForNextSentencePrediction.from_pretrained("bert-base-uncased")
 
         #evaluate before train
